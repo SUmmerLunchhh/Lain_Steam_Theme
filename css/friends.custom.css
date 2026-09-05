@@ -1,0 +1,441 @@
+@import url(../global.css);
+
+.friendListHeaderContainer {
+    background-color: var(--bg-color-dark-blue);
+}
+
+.offline .nOdcT-MoOaXGePXLyPe0H {
+    color: var(--text-color-dark);
+}
+
+.online .nOdcT-MoOaXGePXLyPe0H {
+    color: var(--user-online-color);
+}
+
+.online ._2Ri005Wg_uXDTa71kdRbcN,
+.online ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a,
+.online ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:hover,
+.online ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:active,
+.online ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:visited {
+    color: var(--momo-theme-color);
+}
+
+:not(.friendInviteContainer) .online .ContextMenuButton .SVGIcon_DownArrowContextMenu {
+    fill: var(--user-ingame-color);
+}
+
+.offline ._2Ri005Wg_uXDTa71kdRbcN,
+.offline ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a,
+.offline ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:hover,
+.offline ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:active,
+.offline ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:visited {
+    color: var(--nav-text-color);
+}
+
+.friendlistListContainer {
+    color: var(--nav-text-color);
+    background: var(--friend-list-bg-color);
+}
+
+.recentChatsGroup .friendGroup .groupName,
+.friendGroup.taggedGroup .groupName,
+.friendGroup.gameGroup .groupName {
+    color: var(--icon-color);
+}
+
+.friendsui-container .SVGIcon_PlusCircle {
+    stroke: var(--text-color-dark);
+}
+
+.ingame .nOdcT-MoOaXGePXLyPe0H {
+    color: var(--user-ingame-color);
+}
+
+.ingame.awayOrSnooze ._2Ri005Wg_uXDTa71kdRbcN,
+.ingame ._2Ri005Wg_uXDTa71kdRbcN,
+.ingame ._2Ri005Wg_uXDTa71kdRbcN a,
+.ingame ._2Ri005Wg_uXDTa71kdRbcN a:hover,
+.ingame ._2Ri005Wg_uXDTa71kdRbcN a:active,
+.ingame ._2Ri005Wg_uXDTa71kdRbcN a:visited {
+    color: var(--icon-color);
+}
+
+.friendListFooter {
+    background: var(--bg-color-dark-blue);
+}
+
+.chatRoomListContainer {
+    background: var(--friend-list-bg-color);
+}
+
+.ChatRoomListGroupItem .groupNameStatusContainer .chatRoomName {
+    color: var(--text-color-dark);
+}
+
+.activeTab {
+    background: var(--friend-list-light-blue);
+}
+
+.friendsListSectionTitle {
+    background: var(--friend-list-light-blue);
+}
+
+.titleBarContainer.ChatTabs {
+    background: var(--bg-color-dark-blue);
+}
+
+._2XZq-_f6npaQdAgeRzKIkz.Yd-DsWkYiFiYwpci--Yk_ {
+    background: var(--bg-color-light-gray);
+}
+
+.chatDialogs {
+    background: none;
+}
+
+.chatWindow {
+    background: var(--friend-list-bg-color);
+}
+
+.inviteAnotherFriendButton {
+    background: var(--friend-list-light-blue);
+}
+
+.chatWindow .chatEntry {
+    background: var(--bg-color-light-gray);
+}
+
+._3Ule3rolhZJiBN4yNNtk1s {
+    box-shadow: none;
+    background: var(--text-input-bg-color);
+}
+
+._3Ule3rolhZJiBN4yNNtk1s .RVIs84dAE6wHcjH9tkinc {
+    background: none !important;
+    border: none;
+}
+
+.RVIs84dAE6wHcjH9tkinc {
+    border: 1px solid var(--user-ingame-color);
+    background: var(--bg-color-dark-blue) !important;
+}
+
+.RVIs84dAE6wHcjH9tkinc:hover {
+    background: var(--main-bg-color) !important;
+}
+
+.ingame ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN,
+.ingame ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a,
+.ingame ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:hover,
+.ingame ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:active,
+.ingame ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:visited,
+.ingame._1BbOegz8bYL7iPzgYpOgQI ._2Ri005Wg_uXDTa71kdRbcN {
+    color: var(--icon-color);
+}
+
+.playerNameQuickAccessContainer .playerNicknameBracket {
+    color: var(--icon-color);
+}
+
+.playerNicknameBracket {
+    color: var(--nav-text-color);
+}
+
+._3XEmWmfQy7gbYJ4KJ1N9tp {
+    color: var(--icon-color);
+}
+
+.quickAccessFriend .clanName {
+    color: var(--user-ingame-color);
+}
+
+.friend.online {
+    color: var(--user-online-color);
+}
+
+._1DsumfIa3MlkzUV9EXY5W9.in-game ._2n0EiKMGRP-r_BI5tDtttu {
+    color: var(--user-ingame-color);
+}
+
+.FriendsListContent .friendlistListContainer .friendGroup.onlineFriends .groupName,
+.FriendsListContent .friendlistListContainer .friendGroup.offlineFriends .groupName {
+    color: var(--nav-text-color);
+}
+
+/* chat文字样式 */
+.msgText {
+    color: var(--text-color-dark) !important;
+    display: inline-block;
+    background: var(--bg-color-light-gray);
+    padding: 5px 10px;
+    border-radius: 4px;
+    line-height: normal;
+    font-size: 16px;
+}
+
+.ChatSpeaker.ChatRoomSpeaker.SpeakerLineBreak.isCurrentUser {
+    display: none;
+}
+
+.MultiUserChat .msg:not(.ChatMsgSlashEmote) {
+    margin-top: 10px;
+}
+
+.MultiUserChat .isCurrentUser {
+    text-align: right;
+}
+
+.MultiUserChat .isCurrentUser img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+}
+
+.MultiUserChat .isCurrentUser .msgText {
+    background: var(--friend-list-light-blue);
+    color: var(--bg-color-dark-blue) !important;
+}
+
+._113iuw_HlE_qSgt9cGWCSv {
+    color: var(--user-ingame-color);
+}
+
+.OneOnOneVoiceRoomControls {
+    background: var(--friend-list-light-blue);
+}
+
+._1G1ACDfp4yn4cUO1xY7_d3 {
+    color: var(--nav-text-color);
+}
+
+._3qYm9oxf8MdyvQDJgbfCrF ._10OzYaCdn7cgVMec9ozEJG {
+    background: var(--main-bg-color);
+}
+
+._3qYm9oxf8MdyvQDJgbfCrF:hover {
+    background-color: var(--friend-list-light-blue);
+}
+
+._2m5YDddCyVhilOuWH-bTC1 {
+    color: var(--user-online-color);
+}
+
+.isCurrentUser ._2m5YDddCyVhilOuWH-bTC1 {
+    color: var(--user-ingame-color);
+}
+
+._3qYm9oxf8MdyvQDJgbfCrF ._10OzYaCdn7cgVMec9ozEJG ._2ovvDFSsxzUoYuqzJsxecQ:hover {
+    color: var(--user-ingame-color);
+}
+
+._3qYm9oxf8MdyvQDJgbfCrF ._10OzYaCdn7cgVMec9ozEJG ._2ovvDFSsxzUoYuqzJsxecQ {
+    color: var(--text-color-dark);
+}
+
+._1KPraihJAKiBwLJWmOlju2 {
+    color: var(--user-ingame-color);
+}
+
+.VoiceToggle {
+    background: linear-gradient(to bottom right, var(--voice-btn-color-star), var(--voice-btn-color-end)) !important;
+}
+
+.VoiceToggle.Inactive:hover {
+    background: linear-gradient(to bottom right, var(--voice-btn-color-star), var(--voice-btn-color-end)) !important;
+}
+
+/* 右键菜单 */
+.popup_chat_frame:has(.PP7LM0Ow1K5qkR8WElLpt) .PP7LM0Ow1K5qkR8WElLpt {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.popup_chat_frame:has(.PP7LM0Ow1K5qkR8WElLpt) ._2EstNjFIIZm_WUSKm5Wt7n {
+    border-radius: 4px !important;
+    overflow: hidden !important;
+}
+
+.popup_chat_frame:has(.PP7LM0Ow1K5qkR8WElLpt) .PP7LM0Ow1K5qkR8WElLpt.visible ._2EstNjFIIZm_WUSKm5Wt7n {
+    background: var(--friend-list-bg-color) !important;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.popup_chat_frame:has(.PP7LM0Ow1K5qkR8WElLpt) ._1n7Wloe5jZ6fSuvV18NNWI {
+    color: var(--text-color-dark);
+}
+
+.popup_chat_frame:has(.PP7LM0Ow1K5qkR8WElLpt) ._18z-3vkWndCBO5WJgFldRK {
+    background: var(--bg-color-dark-blue) !important;
+    color: var(--user-ingame-color) !important;
+}
+
+.popup_chat_frame:has(.PP7LM0Ow1K5qkR8WElLpt) ._1n7Wloe5jZ6fSuvV18NNWI:hover {
+    background: var(--bg-color-dark-blue) !important;
+    color: var(--user-ingame-color) !important;
+}
+
+.popup_chat_frame:has(.PP7LM0Ow1K5qkR8WElLpt) ._2EstNjFIIZm_WUSKm5Wt7n {
+    padding: 0;
+}
+
+.popup_chat_frame:has(.PP7LM0Ow1K5qkR8WElLpt) ._1n7Wloe5jZ6fSuvV18NNWI {
+    border: none;
+    padding: 8px 22px 8px 22px;
+}
+
+.PP7LM0Ow1K5qkR8WElLpt:has(._1n7Wloe5jZ6fSuvV18NNWI) ._1n7Wloe5jZ6fSuvV18NNWI:first-of-type {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.EuFePPYFGrcf99uLXmBYN ._2l4z-U60lABvd9XWArGjAf {
+    background: var(--bg-color-light-gray) !important;
+    color: var(--bg-color-dark-blue) !important;
+}
+
+.EuFePPYFGrcf99uLXmBYN ._2l4z-U60lABvd9XWArGjAf:hover,
+.EuFePPYFGrcf99uLXmBYN ._2l4z-U60lABvd9XWArGjAf:focus {
+    background: var(--bg-color-dark-blue) !important;
+    color: var(--user-ingame-color) !important;
+}
+
+body.ContextMenuPopupBody ._1n7Wloe5jZ6fSuvV18NNWI {
+    color: var(--text-color-dark);
+}
+
+body.ContextMenuPopupBody ._1n7Wloe5jZ6fSuvV18NNWI:hover {
+    background: var(--bg-color-dark-blue) !important;
+    color: var(--user-ingame-color) !important;
+}
+
+.RVIs84dAE6wHcjH9tkinc._3zOBeq5W4cNK3lRz_7aroW SVG,
+.RVIs84dAE6wHcjH9tkinc.Aupswi7-c-w3XwNO5cp2i SVG {
+    color: var(--bg-color-light-gray);
+}
+
+.friendsui-container .SVGIcon_TextRoom,
+.friendsui-container .SVGIcon_Button.SVGIcon_TextRoom,
+.friendsui-container .SVGIcon_VoiceRoom,
+.friendsui-container .SVGIcon_Button.SVGIcon_VoiceRoom {
+    color: var(--bg-color-light-gray);
+}
+
+.chatWindow .chatHeader {
+    background: var(--friend-list-light-blue) !important;
+}
+
+._1osHa9KHOmdCDNrA232z4N {
+    background: none;
+}
+
+._2OoTJwlWvzvAysWOOEQaXS {
+    background: none;
+}
+
+.RVIs84dAE6wHcjH9tkinc:not(.jaQN2IyN4P8LZXJ6P11qy):focus .SVGIcon_Button.SVGIcon_Submit path,
+.RVIs84dAE6wHcjH9tkinc:not(.jaQN2IyN4P8LZXJ6P11qy):hover .SVGIcon_Button.SVGIcon_Submit path,
+.RVIs84dAE6wHcjH9tkinc:not(.jaQN2IyN4P8LZXJ6P11qy) .SVGIcon_Button.SVGIcon_Submit path {
+    fill: var(--user-ingame-color);
+}
+
+.chatHistoryScroll {
+    padding-top: 40px;
+}
+
+.msg.isCurrentUser.ChatMessageErrorSending {
+    background: none;
+}
+
+.ScrollToBottomButton>span {
+    background: var(--friend-list-light-blue) !important;
+}
+
+.chatImageContainer.parentSelector {
+    background: none;
+}
+
+.chatFileUploadPreviewContainer {
+    background: var(--friend-list-bg-color);
+}
+
+.chatFileUploadProgressContainer {
+    background: var(--friend-list-bg-color);
+}
+
+.quickAccessFriends .favoriteElement:hover .friend .playerName {
+    color: var(--text-color-dark);
+}
+
+.quickAccessFriends .friend.ingame {
+    color: var(--user-ingame-color);
+}
+
+.chatImageContainer img {
+    position: relative;
+    transform: translateY(-100%);
+}
+
+.MultiUserChat .isCurrentUser img {
+    display: inline-block;
+}
+
+.UA15KlVbtDSJkqSpIAMIN {
+    background: var(--momo-theme-color);
+}
+
+._1HNpQBKKKQ1tG2OZH3CSsh {
+    color: var(--icon-color);
+}
+
+.chatRoomGroupHeaderName {
+    color: var(--icon-color);
+}
+
+.chatRoomTextChannel:hover,
+.chatRoomVoiceChannel:hover .chatRoomVoiceChannelName,
+.chatRoomTextChannel:hover .chatRoomTextChannel {
+    color: var(--text-color-dark);
+}
+
+.chatRoomTextChannel:hover .SVGIcon_TextRoom .TextLines {
+    stroke: var(--text-color-dark);
+}
+
+.ContextMenuButton:has(svg) .SVGIcon_Button {
+    fill: var(--text-color-dark) !important;
+}
+
+.dUQIH8Qg80N6kjB8UQO0P:has(._1SFqyFzFrpPOEAKCrq2kKZ) ._1SFqyFzFrpPOEAKCrq2kKZ {
+    background: var(--friend-list-light-blue);
+    border: 1px solid var(--bg-color-dark-blue);
+    padding: 2px;
+}
+
+.dUQIH8Qg80N6kjB8UQO0P:has(._1SFqyFzFrpPOEAKCrq2kKZ) ._1SFqyFzFrpPOEAKCrq2kKZ:hover {
+    background: var(--friend-list-light-blue);
+}
+
+.popup_chat_frame:has(._1mROo5bpUJSg8D8ILx7qpw) .SVGIcon_Button {
+    fill: var(--bg-color-dark-blue);
+}
+
+.popup_chat_frame:has(._2CJ0LpiSgVs2JuTlwbzBM) ._2CJ0LpiSgVs2JuTlwbzBM ._1mROo5bpUJSg8D8ILx7qpw {
+    color: var(--bg-color-dark-blue);
+}
+
+.popup_chat_frame:has(._2CJ0LpiSgVs2JuTlwbzBM) ._2CJ0LpiSgVs2JuTlwbzBM._1ddEQAfz6GuVRSEqk-d0r svg {
+    fill: var(--user-ingame-color);
+}
+
+.popup_chat_frame:has(._2CJ0LpiSgVs2JuTlwbzBM) ._2CJ0LpiSgVs2JuTlwbzBM._1ddEQAfz6GuVRSEqk-d0r div {
+    color: var(--user-ingame-color);
+}
+
+body:has(#popup_target) .title-area-icon div {
+    color: var(--text-color-dark);
+}
+
+body:has(#popup_target) .title-area-icon .SVGIcon_X_Line line {
+    stroke: var(--text-color-dark);
+}

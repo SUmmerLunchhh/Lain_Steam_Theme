@@ -1,0 +1,116 @@
+@import url(../global.css);
+
+.DialogInput_Wrapper>input.DialogInput {
+    background: var(--text-input-bg-color);
+}
+
+.zhaKeChn9HPNSMtk0ami_ ._1e6tjguQEHdYIehM9aRmO5 {
+    background: var(--bg-color-light-gray);
+}
+
+._3B8wRA4H7e_oSksYNqpSPv._1B1XTNsfuwOaDPAkkr8M42 {
+    color: var(--text-color-dark);
+}
+
+._26v9mHAi56x63OwY-jxett {
+    color: var(--nav-text-color);
+}
+
+.contextMenuItem {
+    color: var(--nav-text-color) !important;
+}
+
+/* 隐藏分割线 */
+._2EstNjFIIZm_WUSKm5Wt7n:has(hr) hr {
+    display: none;
+}
+
+/* 取消padding */
+body.ContextMenuPopupBody ._2EstNjFIIZm_WUSKm5Wt7n {
+    padding: 0;
+}
+
+.PP7LM0Ow1K5qkR8WElLpt:has(._1n7Wloe5jZ6fSuvV18NNWI) ._1n7Wloe5jZ6fSuvV18NNWI {
+    border: none;
+    padding: 8px 22px 8px 22px;
+}
+
+/* 首尾菜单项 */
+.PP7LM0Ow1K5qkR8WElLpt:has(._1n7Wloe5jZ6fSuvV18NNWI) ._1n7Wloe5jZ6fSuvV18NNWI:first-of-type {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+/* 最后一个菜单项 */
+.PP7LM0Ow1K5qkR8WElLpt:has(._1n7Wloe5jZ6fSuvV18NNWI) ._1n7Wloe5jZ6fSuvV18NNWI:last-of-type {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+._2EstNjFIIZm_WUSKm5Wt7n ._2jXHP0742MyApMUVUM8IFn {
+    color: var(--text-color-dark) !important;
+}
+
+/* hover效果 */
+._2EstNjFIIZm_WUSKm5Wt7n ._2jXHP0742MyApMUVUM8IFn:hover {
+    background: var(--bg-color-dark-blue) !important;
+    color: var(--user-ingame-color) !important;
+}
+
+/* 圆角添加 */
+body.ContextMenuPopupBody .PP7LM0Ow1K5qkR8WElLpt {
+    background: transparent !important;
+}
+
+body.ContextMenuPopupBody ._2EstNjFIIZm_WSubKm5Wt7n,
+body.ContextMenuPopupBody ._2EstNjFIIZm_WUSKm5Wt7n {
+    border-radius: 4px !important;
+    overflow: hidden !important;
+}
+
+body.ContextMenuPopupBody .PP7LM0Ow1K5qkR8WElLpt.visible ._2EstNjFIIZm_WUSKm5Wt7n {
+    background: var(--friend-list-bg-color) !important;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* steam应用最小化菜单页面背景 */
+.DesktopUI .PP7LM0Ow1K5qkR8WElLpt,
+._3qIuY9S_vXm3IQS-uE9SRS .PP7LM0Ow1K5qkR8WElLpt {
+    background: var(--friend-list-bg-color) !important;
+}
+
+/* friendlistMenus */
+.GreenEnvelopeMenu,
+.PP7LM0Ow1K5qkR8WElLpt {
+    background: var(--friend-list-bg-color) !important;
+}
+
+/* 主题背景色 */
+
+.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI,
+._3qIuY9S_vXm3IQS-uE9SRS ._1n7Wloe5jZ6fSuvV18NNWI {
+    color: var(--text-color-dark) !important;
+}
+
+.DesktopUI:has(._1n7Wloe5jZ6fSuvV18NNWI) ._1n7Wloe5jZ6fSuvV18NNWI:hover {
+    background: var(--bg-color-dark-blue) !important;
+    color: var(--user-ingame-color) !important;
+}
+
+.DesktopUI:has(._1n7Wloe5jZ6fSuvV18NNWI) .PP7LM0Ow1K5qkR8WElLpt hr {
+    display: none;
+}
+
+/* 通知页面字体颜色 */
+body:has(._3zQLPuC3M-NPNa1tVda9Dz) ._3zQLPuC3M-NPNa1tVda9Dz {
+    color: var(--text-color-dark);
+}
+
+body:has(._2uHOsFCB_RZYZFsMQiw28v) ._2uHOsFCB_RZYZFsMQiw28v {
+    color: var(--text-color-dark);
+}
+
+body:has(.cam5nVZiJHP17RZlbXzmE) .cam5nVZiJHP17RZlbXzmE {
+    color: var(--nav-text-color);
+}

@@ -1,0 +1,404 @@
+@import url(../global.css);
+
+/* 主题变量（仅在设置页容器出现时生效） */
+body {
+    --ba-setting-bg: var(--bg-color-dark-blue);
+    --ba-panel-bg: var(--friend-list-bg-color);
+    --ba-panel-border: var(--user-ingame-color);
+    --ba-text-main: var(--text-color-dark);
+    --ba-text-sub: var(--nav-text-color);
+    --ba-accent-blue: var(--friend-list-light-blue);
+    --ba-accent-blue-strong: var(--user-ingame-color);
+    --ba-accent-yellow: var(--user-online-color);
+}
+
+/* settings$ */
+
+/* 标题颜色 */
+body:has(._2rjVTGz8aLvqOdz5v2gq5C) ._2rjVTGz8aLvqOdz5v2gq5C {
+    color: var(--text-color-dark);
+}
+
+.DialogContent._DialogLayout.CFTLX2wIKOK3hNV-fS7_V {
+    background: linear-gradient(to bottom right, var(--main-bg-color), var(--bg-color-dark-blue));
+}
+
+._2kwFFHckg8jvnwJfg9-la8 {
+    background: var(--main-bg-color);
+}
+
+.online ._2Ri005Wg_uXDTa71kdRbcN,
+.online ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a,
+.online ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:hover,
+.online ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:active,
+.online ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:visited {
+    color: var(--user-online-color) !important;
+}
+
+.DialogHeader,
+.SettingsDialogSubHeader,
+.DesktopUI ._3fPiC9QRyT5oJ6xePCVYz8._3fPiC9QRyT5oJ6xePCVYz8 {
+    color: var(--text-color-dark);
+}
+
+._1-vlriAtKYDViAEunue4VO,
+._1-vlriAtKYDViAEunue4VO ._1rD8X96FdnksZLvRRlEiCR.DesktopUI,
+.DesktopUI ._1-vlriAtKYDViAEunue4VO ._1rD8X96FdnksZLvRRlEiCR,
+button.TEWmsM70ZLEOxLAjDMpcv svg {
+    color: var(--icon-color);
+}
+
+.ingame .nOdcT-MoOaXGePXLyPe0H {
+    color: var(--user-ingame-color);
+}
+
+.ingame ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN,
+.ingame ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a,
+.ingame ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:hover,
+.ingame ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:active,
+.ingame ._1cB0qtF0paHWWyj1XNcnbG._2Ri005Wg_uXDTa71kdRbcN a:visited,
+.ingame._1BbOegz8bYL7iPzgYpOgQI ._2Ri005Wg_uXDTa71kdRbcN {
+    color: var(--user-ingame-color);
+}
+
+.offline .nOdcT-MoOaXGePXLyPe0H {
+    color: var(--text-color-dark);
+}
+
+._2kbiwbjuXdmtPSK_YaZCMU,
+._3jMlJm4PQCA8SfNlUR99Fo {
+    color: var(--text-color-dark);
+}
+
+._3epr8QYWw_FqFgMx38YEEm {
+    color: var(--text-color-dark);
+}
+
+._1W1to_azoBRG95oNAFpf9Q {
+    color: var(--user-ingame-color);
+}
+
+._1ml4SNc3LIyBDHIf8ekVSw {
+    background-color: var(--bg-color-light-gray);
+    box-shadow: inset 0 1px 1px 0px var(--bg-color-light-gray);
+}
+
+.HijmccPB1BKyhOwhX1EVl {
+    background-color: var(--bg-color-dark-blue);
+}
+
+._2LyGIHuQ8SFKb5T262YUvg {
+    background: var(--bg-color-light-gray);
+}
+
+._1W1to_azoBRG95oNAFpf9Q {
+    color: var(--text-color-dark) !important;
+}
+
+._1ifM6luJEQ5H2O1Y3S6F_R {
+    color: var(--nav-text-color) !important;
+}
+
+.DialogSubHeader {
+    color: var(--user-ingame-color) !important;
+}
+
+.DialogContent {
+    background: linear-gradient(to bottom right, var(--main-bg-color), var(--bg-color-dark-blue)) !important;
+}
+
+.DialogBodyText {
+    color: var(--nav-text-color) !important;
+}
+
+body:has(._1-vlriAtKYDViAEunue4VO) ._1-vlriAtKYDViAEunue4VO {
+    border-right: 4px solid rgba(0, 255, 204, 0);
+}
+
+body:has(._1-vlriAtKYDViAEunue4VO) ._1-vlriAtKYDViAEunue4VO._2DpXjzK3WWsOtUWUrcuOG7 {
+    color: var(--text-color-dark);
+    background: none;
+    border-right: 4px solid var(--user-ingame-color);
+}
+
+body:has(._1-vlriAtKYDViAEunue4VO) ._1-vlriAtKYDViAEunue4VO._2DpXjzK3WWsOtUWUrcuOG7 ._1rD8X96FdnksZLvRRlEiCR {
+    color: var(--text-color-dark);
+}
+
+.online .nOdcT-MoOaXGePXLyPe0H {
+    color: var(--user-online-color) !important;
+}
+
+.DialogBody a {
+    color: var(--user-online-color);
+}
+
+/* 设置页面左侧图标与文字 排除当前页后的hover效果 */
+._1-vlriAtKYDViAEunue4VO:hover:not(._2DpXjzK3WWsOtUWUrcuOG7) {
+    background: rgba(0, 255, 204, 0.1);
+    color: var(--text-color-dark);
+}
+
+/* 右上角隐藏 关闭 最大小化图标 */
+body:has(.ModalPosition) .title-area-icon div {
+    color: var(--text-color-dark);
+}
+
+body:has(.ModalPosition) .title-area-icon .SVGIcon_X_Line line {
+    stroke: var(--text-color-dark);
+}
+
+/* ===== Phase 1: Settings Page Refactor (non-destructive overrides) ===== */
+
+/* 主容器改为浅色游戏设置质感 */
+body:has(._2sssIwe0duyIrFvat2oXzH) ._2sssIwe0duyIrFvat2oXzH {
+    background: linear-gradient(180deg, var(--ba-setting-bg) 0%, var(--bg-color-dark-blue) 100%) !important;
+    color: var(--ba-text-main);
+}
+
+/* 左侧栏目壳 */
+body:has(._2kwFFHckg8jvnwJfg9-la8) ._2kwFFHckg8jvnwJfg9-la8 {
+    background: var(--friend-list-bg-color) !important;
+    border-right: 1px solid var(--ba-panel-border);
+}
+
+/* 左侧每个导航项：默认态 */
+body:has(._1-vlriAtKYDViAEunue4VO) ._1-vlriAtKYDViAEunue4VO {
+    border-right: 4px solid transparent !important;
+    color: var(--ba-text-main) !important;
+    border-radius: 4px;
+    margin: 2px 8px;
+    transition: background-color .18s ease, border-color .18s ease;
+}
+
+/* 左侧导航 hover */
+body:has(._1-vlriAtKYDViAEunue4VO) ._1-vlriAtKYDViAEunue4VO:hover:not(._2DpXjzK3WWsOtUWUrcuOG7) {
+    background: rgba(0, 255, 204, 0.15) !important;
+    color: var(--ba-text-main) !important;
+}
+
+/* 左侧导航选中态 */
+body:has(._1-vlriAtKYDViAEunue4VO._2DpXjzK3WWsOtUWUrcuOG7) ._1-vlriAtKYDViAEunue4VO._2DpXjzK3WWsOtUWUrcuOG7 {
+    background: var(--ba-accent-blue) !important;
+    border-right: 4px solid var(--ba-accent-blue-strong) !important;
+    color: var(--bg-color-dark-blue) !important;
+}
+
+body:has(._1-vlriAtKYDViAEunue4VO._2DpXjzK3WWsOtUWUrcuOG7) ._1-vlriAtKYDViAEunue4VO._2DpXjzK3WWsOtUWUrcuOG7 ._1rD8X96FdnksZLvRRlEiCR {
+    color: var(--bg-color-dark-blue) !important;
+}
+
+/* 右侧内容区：卡片化 */
+body.ModalDialogBody:has(.PopupFullWindow) .DialogContentTransition .DialogContent {
+    background: var(--ba-panel-bg) !important;
+    border: 1px solid var(--ba-panel-border);
+    border-radius: 4px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* 标题与副标题层级 */
+body:has(.DialogHeader) .DialogHeader,
+body:has(.SettingsDialogSubHeader) .SettingsDialogSubHeader {
+    color: var(--ba-text-main) !important;
+}
+
+body:has(.DialogBodyText) .DialogBodyText {
+    color: var(--ba-text-sub) !important;
+}
+
+/* 分组标题强调（青色竖条） */
+body:has(.DialogSubHeader) .DialogSubHeader {
+    color: var(--user-ingame-color) !important;
+    border-left: 3px solid var(--user-ingame-color);
+    padding-left: 8px;
+    margin-left: 2px;
+}
+
+/* 顶部标题下的黄色强调线 */
+body:has(._2rjVTGz8aLvqOdz5v2gq5C) ._2rjVTGz8aLvqOdz5v2gq5C {
+    position: relative;
+    color: var(--text-color-dark) !important;
+}
+
+body:has(._2rjVTGz8aLvqOdz5v2gq5C) ._2rjVTGz8aLvqOdz5v2gq5C::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 3px;
+    border-radius: 2px;
+    margin-top: 6px;
+    background: var(--ba-accent-yellow);
+}
+
+body:has(.DialogContentTransition) .DialogContentTransition {
+    background: var(--friend-list-bg-color);
+}
+
+body:has(._2bl0iQ9xigbq4Zd1NI6NZl) ._2bl0iQ9xigbq4Zd1NI6NZl {
+    background: var(--bg-color-light-gray);
+}
+
+/* 家庭图标 */
+body:has(._1RfVQWVozb8NJ_wmCLAtxP) ._3RNLmzBdpcg55exL2SwhT1 ._3K8Afwm4bvd9vSIzAz9siX ._1RfVQWVozb8NJ_wmCLAtxP>svg {
+    color: var(--text-color-dark);
+}
+
+body:has(._3Wb9yDmYPUJksCr7HmaT9H) button.TEWmsM70ZLEOxLAjDMpcv ._3Wb9yDmYPUJksCr7HmaT9H {
+    color: var(--bg-color-light-gray);
+}
+
+body:has(._3wadwgMy2-9k8uOKh3iSdT) button.TEWmsM70ZLEOxLAjDMpcv ._3wadwgMy2-9k8uOKh3iSdT {
+    color: var(--text-color-dark);
+}
+
+body:has(._1RCWDLVLFja1TdD1P53BMq) ._1RCWDLVLFja1TdD1P53BMq {
+    color: var(--nav-text-color);
+}
+
+body:has(._1DFCGL1HyqZkIjEaoNLdjf) ._1DFCGL1HyqZkIjEaoNLdjf {
+    color: var(--text-color-dark) !important;
+}
+
+body:has(.mohK9opGjpCsWNdUuJuFE) .mohK9opGjpCsWNdUuJuFE {
+    color: var(--text-color-dark) !important;
+}
+
+body:has(.YxhO6W2VNKG69k4WqIrip) .YxhO6W2VNKG69k4WqIrip {
+    color: var(--text-color-dark) !important;
+}
+
+/* 取消设置/游戏属性页面元素背景色 */
+.MillenniumWindow_Settings:has(.eKmEXJCm_lgme24Fp_HWt) .eKmEXJCm_lgme24Fp_HWt,
+.MillenniumWindow_GameProperties:has(.eKmEXJCm_lgme24Fp_HWt) .eKmEXJCm_lgme24Fp_HWt {
+    background: none;
+}
+
+/* 修改存储空间页面最后运行日期文字颜色 */
+.MillenniumWindow_Settings:has(._1G9v2mshuM0YQNG51iX5fH) ._1G9v2mshuM0YQNG51iX5fH {
+    color: var(--nav-text-color) !important;
+}
+
+.MillenniumWindow_Settings:has(.ReactVirtualized__Grid__innerScrollContainer) .ReactVirtualized__Grid__innerScrollContainer svg {
+    color: var(--nav-text-color) !important;
+}
+
+.MillenniumWindow_Settings:has(._3HOm6KmoXLktGGI2qrr6bu) ._3HOm6KmoXLktGGI2qrr6bu {
+    color: var(--nav-text-color) !important;
+}
+
+.MillenniumWindow_Settings:has(._3Vl2zkYPoCpw1q_1n28D3z) ._3Vl2zkYPoCpw1q_1n28D3z {
+    background: none;
+}
+
+.MillenniumWindow_Settings:has(._7EGqd8bdiXJBd2fj5Hh8r) ._7EGqd8bdiXJBd2fj5Hh8r {
+    background: var(--bg-color-light-gray);
+}
+
+.MillenniumWindow_Settings:has(._7EGqd8bdiXJBd2fj5Hh8r) ._7EGqd8bdiXJBd2fj5Hh8r ._3HgL0eRQXwU6dIEXXK6qba ._1RUoX0kTOBfqpwCaBZGDLJ {
+    color: var(--text-color-dark);
+}
+
+/* 录制与截图页面的头部尾部黑色渐变背景色隐藏 */
+.ModalDialogBody:has(.YzIcpcz4oFx-nndxro5jE) .YzIcpcz4oFx-nndxro5jE,
+.ModalDialogBody:has(._162CJAH8jPwIYGGg5Q2YIc) ._162CJAH8jPwIYGGg5Q2YIc {
+    background: none;
+}
+
+/* 调整游戏属性选项页面 */
+body:has(.cbinvNOoQE045ZV5gCk_N) .cbinvNOoQE045ZV5gCk_N {
+    color: var(--nav-text-color);
+}
+
+body:has(._3g-QHB82IGz91Hsk1Hw4lh) ._3g-QHB82IGz91Hsk1Hw4lh {
+    color: var(--text-color-dark);
+}
+
+body:has(.TlSg5YiFT0KKv6hj9YlKm) .TlSg5YiFT0KKv6hj9YlKm {
+    color: var(--nav-text-color);
+}
+
+body:has(._3H9mJurCFIkAqvWpYfEaDM) ._3H9mJurCFIkAqvWpYfEaDM {
+    color: var(--text-color-dark);
+}
+
+body:has(._3cAh02omVEUuC1wX2K36Ma) ._3cAh02omVEUuC1wX2K36Ma {
+    color: var(--nav-text-color);
+}
+
+._3PdB1VQrU1sU5KGongHSGH .a19KifKnB2YZP_hYoFsar {
+    color: var(--text-color-dark) !important;
+}
+
+._3PdB1VQrU1sU5KGongHSGH .a19KifKnB2YZP_hYoFsar:hover {
+    color: var(--user-ingame-color) !important;
+}
+
+.ModalDialogBody:has(._1SKB0Xc7OpWlOlr-wSi8ho) ._1SKB0Xc7OpWlOlr-wSi8ho {
+    background: var(--bg-color-dark-blue) !important;
+}
+
+.ModalDialogBody:has(._3sXdOJ9DEh5zdS54_ptwgW) ._3sXdOJ9DEh5zdS54_ptwgW {
+    background: var(--bg-color-dark-blue);
+}
+
+.ModalDialogBody:has(._3puO0PC58oWnOGJgisPvgZ) ._3puO0PC58oWnOGJgisPvgZ .dR1gzt2Xg4CjsE9T0Q4Lc {
+    color: var(--user-ingame-color);
+}
+
+.ModalDialogBody:has(.pht3SaejGcAJEjNG8d6nd) .pht3SaejGcAJEjNG8d6nd {
+    background: var(--friend-list-bg-color) !important;
+}
+
+._3SPlcoJKzx2TM4WVMW9Xpt .a19KifKnB2YZP_hYoFsar {
+    color: var(--text-color-dark);
+}
+
+.ModalDialogBody:has(._3SPlcoJKzx2TM4WVMW9Xpt) ._3SPlcoJKzx2TM4WVMW9Xpt {
+    border: var(--user-ingame-color) 1px solid !important;
+}
+
+.ModalDialogBody:has(._2H4LypEOvoKY3pHtDIpt5l) ._2H4LypEOvoKY3pHtDIpt5l {
+    color: var(--text-color-dark) !important;
+}
+
+.ModalDialogBody:has(.DialogDropDown) ._1FyBL6obxHQ2Z2CsaV2Gbz._1FyBL6obxHQ2Z2CsaV2Gbz:not(.HkTNMTzgCdY-DINJyKsGL) .DialogDropDown:hover {
+    background: var(--bg-color-light-gray);
+}
+
+.ModalDialogBody:has(._30wJO3MC4x-I1OWpy1TAeE) ._30wJO3MC4x-I1OWpy1TAeE {
+    background: var(--bg-color-dark-blue);
+}
+
+.ModalDialogBody:has(._30wJO3MC4x-I1OWpy1TAeE) ._30wJO3MC4x-I1OWpy1TAeE * {
+    color: var(--nav-text-color);
+}
+
+.ModalDialogBody:has(._2oAiZidGyUxL-hfupFDQ2m) ._2oAiZidGyUxL-hfupFDQ2m:focus {
+    background: var(--ba-setting-bg);
+}
+
+.ModalDialogBody:has(._2oAiZidGyUxL-hfupFDQ2m) ._2oAiZidGyUxL-hfupFDQ2m:focus * {
+    color: var(--text-color-dark);
+}
+
+.ModalDialogBody:has(.DialogInput) .DialogInput::placeholder {
+    color: var(--nav-text-color);
+}
+
+.ModalDialogBody:has(._1LCoWsUrJmZHr7SVX0luaG) ._1LCoWsUrJmZHr7SVX0luaG {
+    background: var(--ba-accent-blue) !important;
+}
+
+.ModalDialogBody:has(._3jWpi0kJp_piNEvdMufMmy) ._3jWpi0kJp_piNEvdMuvMmy {
+    border: 1px solid var(--bg-color-light-gray) !important;
+}
+
+.ModalDialogBody:has(.OX7USkJ5dDP_icD00Gal6) .OX7USkJ5dDP_icD00Gal6 .a19KifKnB2YZP_hYoFsar,
+.ModalDialogBody:has(.OX7USkJ5dDP_icD00Gal6) .OX7USkJ5dDP_icD00Gal6 ._3OwCSCZC5BPFq4X7PLVzKp,
+.ModalDialogBody:has(.OX7USkJ5dDP_icD00Gal6) .OX7USkJ5dDP_icD00Gal6 ._33vTXbnDrHUQCTEKwJC3Eh {
+    color: var(--text-color-dark);
+}
+
+.ModalDialogBody:has(.X3pN_ESh0aoxmm2nK65Hu) .X3pN_ESh0aoxmm2nK65Hu {
+    background: var(--friend-list-light-blue) !important;
+}
