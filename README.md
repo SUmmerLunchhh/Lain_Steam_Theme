@@ -12,8 +12,8 @@
 ### 第二步：安装Lain主题
 
 1. 下载并解压本仓库的内容。
-2. 将解压后的文件夹放入 `steam\steamui\skins` 目录中。
-*将主题文件夹放入 skins 目录中的示例*
+2. 将解压后的文件夹放入 `Steam\millennium\themes` 目录中。
+*将主题文件夹放入 themes 目录中的示例*
 3. 打开 Steam，进入 `设置`。
 4. 导航到 `主题` 选项卡，选择Serial Experiments Lain主题。
 *导航到设置 -> 主题，选择Serial Experiments Lain主题*
