@@ -1,5 +1,6 @@
-#Lain的Steam主题皮肤#
-#预览图
+#Lain的Steam主题皮肤
+
+预览图
 
 <img src="https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/mmexport1788630944208.jpg" height="200">
 这个仓库包含一个为 Steam 客户端定制的 **Lain**主题。增强 Steam 界面的外观和感觉。
