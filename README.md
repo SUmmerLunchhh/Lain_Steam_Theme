@@ -33,7 +33,7 @@ Place the extracted folder into the Steam\millennium\themes directory.
 
 Open Steam and go to Settings.
 
-Navigate to the Themes tab and select the Serial Experiments Lain theme.
+Navigate to the Themes tab and select the Lain theme.
 (Navigate to Settings -> Themes, select Lain)
 
 Enjoy your brand new Lain Steam theme!
