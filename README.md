@@ -23,7 +23,7 @@ Automatic Installation: Use the installation script provided for your operating 
 
 Manual Installation: Follow the instructions to download and place the required files manually.
 
-For detailed instructions on installing Millennium, visit steambrew.app.
+For detailed instructions on installing Millennium, visit [https://steambrew.app/](https://steambrew.app/)](https://steambrew.app/).
 
 Step 2: Install the Lain Theme
 Download and extract the contents of this repository.
