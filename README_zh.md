@@ -5,7 +5,7 @@
 <img src="https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/mmexport1788630944208.jpg" height="200">
 <img src="https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/mmexport1788630946568.jpg" height="200">
 <img src="https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/mmexport1788630948748.jpg" height="200">
-<img src="https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/mmexport1788630950993.jpg" height="200">
+<img src="https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-12%20211929.png" height="200">
 <img src="https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/mmexport1788630953222.jpg" height="200">
 <img src="https://github.com/SUmmerLunchhh/AAA-/blob/main/imgs/mmexport1788630955613.jpg" height="200">
 这个仓库包含一个为 Steam 客户端定制的 **Lain**主题。增强 Steam 界面的外观和感觉。
