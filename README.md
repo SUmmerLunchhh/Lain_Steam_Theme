@@ -15,7 +15,7 @@ Built on the skeleton of [blueArchiveSteamSkin](https://github.com/EugeneXXXie/b
 - Hover feedback jumps with `steps()` — no easing curve, because that era reacted instantly
 - Consistent palette across titles, icons, context menus and Settings
 - A show/hide button on the activity block; the state is remembered locally
-- The momo icon on the Friends button
+- The Navi icon on the Friends button
 
 **Motion** (three tiers)
 
