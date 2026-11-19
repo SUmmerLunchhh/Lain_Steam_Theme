@@ -1,64 +1,68 @@
-# Lain — Steam 主题
+> **English** | [简体中文](README_zh.md)
 
-为 Steam 客户端做的《Serial Experiments Lain》风格主题：纯黑底、旧米色文字、脏粉描边、全角标签，加上一层很轻的 CRT 扫描线和闪烁。
+# Lain — a Steam theme
 
-基于 [blueArchiveSteamSkin](https://github.com/EugeneXXXie/blueArchiveSteamSkin)（作者 EugeneXXXie，MIT）的骨架改写，原始文件结构和部分设置页样式来自该项目。
+A *Serial Experiments Lain* theme for the Steam client: near-black background, warm beige text, dusty-pink borders, full-width labels, and a light CRT scanline/flicker overlay.
 
-## 效果
+Built on the skeleton of [blueArchiveSteamSkin](https://github.com/EugeneXXXie/blueArchiveSteamSkin) by EugeneXXXie (MIT). The file layout and a good part of the settings-page styling come from that project.
 
-- 库页面、商店、社区、下载、好友列表全部换成 Lain 的界面
-- 标题、图标、右键菜单、设置页统一配色
-- 新闻块右上角有「隐藏 / 显示」按钮，状态记在本地
-- 好友按钮上的 momo 图标
-- 音效：打开 Steam 时的开机音，加上 CRT 底噪、悬停和点击音
-- 切换界面音效：点「商店 / 库 / 社区 / 个人主页」时各有一段对应的音，点右下角「好友与聊天」也有
+## What you get
 
-## 安装
+- Library, Store, Community, Downloads and the friends list all restyled
+- Consistent palette across titles, icons, context menus and Settings
+- A show/hide button on the activity block; the state is remembered locally
+- The momo icon on the Friends button
+- Sound: startup chime, CRT hum, hover and click feedback
+- Navigation sounds for Store / Library / Community / Profile, plus the Friends & Chat button in the bottom-right corner
 
-### 1. 先装 Millennium
+## Installation
 
-主题跑在 [Millennium](https://steambrew.app/) 上，需要先装它（否则 Steam 不认 `skin.json`）。
+### 1. Install Millennium
 
-### 2. 放主题文件
+The theme runs on [Millennium](https://steambrew.app/) — install that first, otherwise Steam won't read `skin.json` at all.
 
-把整个 `LainTheme` 文件夹放到 Millennium 的主题目录：
+### 2. Drop the theme in
 
-- **Windows**：`C:\Program Files (x86)\Steam\millennium\themes\`
-- **Linux**：`~/.local/share/Steam/millennium/themes/`（或你 Steam 的安装位置）
+Put the whole `LainTheme` folder into Millennium's themes directory:
 
-放好后目录应该是：
+- **Windows**: `C:\Program Files (x86)\Steam\millennium\themes\`
+- **Linux**: `~/.local/share/Steam/millennium/themes/` (or wherever your Steam lives)
+
+The result should look like:
 
 ```
 millennium/themes/LainTheme/skin.json
 ```
 
-> 注意：网上有些教程让放到 `steamui/skins`，那是 Steam 自带皮肤的老路径，和 Millennium 不是一回事。
+> Note: some older guides tell you to use `steamui/skins`. That's Steam's own built-in skin directory and has nothing to do with Millennium.
 
-### 3. 启用
+### 3. Enable it
 
-打开 Steam → 设置 → 主题 → 选 **Lain**。
+Steam → Settings → Themes → pick **Lain**.
 
-## 主题设置
+## Theme settings
 
-Steam 设置 → 主题 → Lain → **效果** 里可以关掉「CRT 效果（扫描线 / 闪烁 / 噪点）」。
-关掉之后界面更安静，也省一些 GPU，低配机器建议关。
+Under Settings → Themes → Lain → **Effects** you can turn off:
 
-## 声音素材
+- **CRT effects** (scanlines / flicker / noise) — quieter interface, less GPU load, worth disabling on low-end machines
+- **Sound** (hum / hover / click) — no audio playing at all
 
-六个音频放在 `music/` 里：开机音（`Lain.ogg`）、切到商店、切到库、切到社区、切到个人主页、右下角好友按钮。全部是 Ogg Opus，加起来约 76 KB。
+## Sound assets
 
-`js/sound.js` 里同时内嵌了同一批音频的 base64 副本 —— 因为 Steam 的界面跑在 CEF 里，注入的 JS 拿不到可靠的主题目录路径，直接读 `music/*.ogg` 有被拦的风险，内嵌那份是"保证能响"的版本。
+Six audio files live in `music/`: the startup chime (`Lain.ogg`), Store, Library, Community, Profile, and the bottom-right Friends button. All Ogg Opus, roughly 76 KB in total.
 
-要替换音效的话两边都要更新，细节见 [music/README.md](music/README.md)。
+`js/sound.js` also carries base64 copies of the same clips. Steam's UI runs inside CEF, and injected JS has no reliable way to resolve the theme's directory, so reading `music/*.ogg` directly can get blocked — the embedded copies are the ones guaranteed to play.
 
-## 已知限制
+If you swap a sound you have to update both sides; see [music/README.md](music/README.md) for details.
 
-- Steam 每次大版本更新会重算 CSS 类名（那些 `_1TdaAqMFadi0UTqilrkelR` 之类），届时部分位置可能掉样式，需要跟着更新。
-- 开机音受 Chromium 的自动播放策略限制：如果 Steam 启动时页面没有得到过鼠标/键盘交互，声音会被推迟到你第一次点击时播放。这是浏览器的硬性规定，绕不过去，所以有时会感觉「开机音慢了一拍」。
-- 只在 Windows + Millennium 最新版上测过。
+## Known limitations
 
-## 许可
+- Steam reshuffles its CSS class hashes on every major update (things like `_1TdaAqMFadi0UTqilrkelR`). Some areas will lose styling when that happens and the theme has to be updated.
+- The startup sound is subject to Chromium's autoplay policy: if the page hasn't received a real mouse/keyboard interaction yet, playback is deferred until your first click. That's a hard browser rule, so the chime sometimes feels like it lands a beat late.
+- Only tested on Windows with a recent Millennium build.
 
-代码部分沿用上游的 [MIT License](LICENSE)。原作者版权声明保留，Lain 主题的改动部分版权归 SUmmerLunch。
+## License
 
-主题里使用的图片、字体和音频来自动画《Serial Experiments Lain》，版权归原权利人所有，仅作个人欣赏用途。
+Code is under the upstream [MIT License](LICENSE). The original author's copyright notice is preserved; copyright for the Lain-specific changes belongs to SUmmerLunch.
+
+Images, fonts and audio come from the anime *Serial Experiments Lain* and remain the property of their respective rights holders. They're included for personal, non-commercial use only.
