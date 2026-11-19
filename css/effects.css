@@ -1,0 +1,82 @@
+/* ============================================================
+   CRT 效果层：噪点网格 + 扫描光束 + 轻微闪烁
+   ------------------------------------------------------------
+   单独成文件，是为了能在「设置 → 主题 → Lain → 效果」里关掉。
+   低配机器、或者觉得闪眼的时候，关掉可省不少 GPU。
+   ============================================================ */
+
+@keyframes cyberScanline {
+    0% {
+        transform: translateY(-100%);
+    }
+    48% {
+        transform: translateY(1100vh);
+    }
+    50% {
+        transform: translateY(1100vh);
+    }
+    98%,
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+/* 只动画 opacity：以前的版本每帧改 filter: drop-shadow，
+   等于每帧重绘整个屏幕，代价很大，视觉上却几乎看不出差别。 */
+@keyframes crtFlicker {
+    0%,
+    90%,
+    95%,
+    100% {
+        opacity: 0.2;
+    }
+    91% {
+        opacity: 0.08;
+    }
+    92% {
+        opacity: 0.35;
+    }
+    93% {
+        opacity: 0.12;
+    }
+}
+
+body {
+    position: relative;
+}
+
+/* 1. 静态噪点网格底层 */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.2) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.015), rgba(0, 255, 0, 0.005), rgba(0, 0, 255, 0.015));
+    background-size: 100% 2px, 4px 100%;
+    pointer-events: none;
+    z-index: 999998;
+    animation: crtFlicker 12s infinite;
+}
+
+/* 2. 动态 1 像素扫描光束层 */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0, 255, 200, 0), rgba(0, 255, 166, 0.484) 50%, rgba(0, 255, 200, 0));
+    box-shadow: 0 0 6px rgb(0, 255, 136), 0 0 1px rgba(255, 255, 255, 0.6);
+    animation: cyberScanline 7s linear infinite;
+    pointer-events: none;
+    z-index: 999999;
+}
+
+/* 系统里开了「减少动态效果」就自动静止，不必手动去关 */
+@media (prefers-reduced-motion: reduce) {
+    body::before,
+    body::after {
+        animation: none;
+    }
+}

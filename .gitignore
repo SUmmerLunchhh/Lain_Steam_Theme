@@ -1,0 +1,13 @@
+# Windows
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# macOS
+.DS_Store
+
+# 编辑器 / 备份
+*.bak
+*.tmp
+.vscode/
+.idea/

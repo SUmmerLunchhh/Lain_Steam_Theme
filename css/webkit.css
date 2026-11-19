@@ -25,7 +25,7 @@ body {
     z-index: -1 !important;
     opacity: .7 !important;
     visibility: visible !important;
-    background: url(../imgs/fallbackOverBG.png) no-repeat center center !important;
+    background: url(../imgs/fallbackOverBG.webp) no-repeat center center !important;
     background-size: cover !important;
 }
 
@@ -34,7 +34,7 @@ body {
     z-index: -1 !important;
     opacity: 1 !important;
     visibility: visible !important;
-    background: url(../imgs/shopBG.png) no-repeat center center !important;
+    background: url(../imgs/shopBG.webp) no-repeat center center !important;
     background-size: cover !important;
 }
 
@@ -43,7 +43,7 @@ body {
     z-index: -1 !important;
     opacity: 1 !important;
     visibility: visible !important;
-    background: url(../imgs/communityBG.png) no-repeat center center !important;
+    background: url(../imgs/communityBG.webp) no-repeat center center !important;
     background-size: cover !important;
 }
 

@@ -1,0 +1,78 @@
+:root {
+    --user-online-color: rgb(255, 105, 180);
+    --momo-theme-color: rgb(186, 85, 211);
+    --user-ingame-color: rgb(0, 240, 255);
+    --icon-color: rgb(0, 255, 204);
+    --main-bg-color: rgb(15, 20, 35);
+    --text-color-dark: rgb(0, 255, 204);
+    --bg-color-light-gray: rgb(25, 35, 55);
+    --bg-color-dark-blue: rgb(8, 12, 22);
+    --nav-text-color: rgb(180, 210, 240);
+    --voice-btn-color-star: rgb(0, 255, 128);
+    --voice-btn-color-end: rgb(0, 200, 255);
+    --friend-list-bg-color: rgb(10, 14, 24);
+    --friend-list-light-blue: rgb(20, 45, 75);
+    --text-input-bg-color: rgb(5, 8, 15);
+}
+
+/* 只给可点区域换自定义光标；输入框/文本选择/窗口边缘保留系统光标 */
+a,
+button,
+[role="button"],
+.SVGIcon_Button,
+.DialogButton,
+.contextMenuItem,
+body {
+    cursor: url('imgs/cursor-default.png') 3 3, auto;
+}
+
+input,
+textarea,
+[contenteditable="true"] {
+    cursor: auto;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: var(--text-color-dark);
+    font-family: "MS Gothic", "ＭＳ ゴシック", "Yu Gothic UI", "Noto Sans Mono CJK JP",
+        "Cascadia Mono", "Consolas", "Courier New", monospace;
+    letter-spacing: 0.5px;
+    background-image: linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px), 
+                      linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
+    background-size: 4px 4px;
+}
+
+::selection {
+    background-color: var(--momo-theme-color);
+    color: var(--main-bg-color);
+}
+
+/* 键盘操作时的焦点框：Lain 的青色，不用 Steam 默认的蓝色方框 */
+:focus-visible {
+    outline: 1px solid var(--text-color-dark);
+    outline-offset: 2px;
+}
+
+/* ===== 滚动条 ===== */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.35);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--friend-list-light-blue);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-color-dark);
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}

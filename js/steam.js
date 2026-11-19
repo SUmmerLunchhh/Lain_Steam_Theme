@@ -36,80 +36,82 @@
 <g><path fill="#2f5a89" d="M 94.01,17.31 c -0.08,-0.83 0.15,-1.56 0.68,-2.18 c 0.63,0.97 0.57,1.92 -0.18,2.84 c -0.36,-0.06 -0.53,-0.28 -0.5,-0.66 Z"/></g>
     </svg>`;
 
-    let isInjection = true; // 标记按钮是否已插入
-    let getHtmlBody = document.body;
+    // ================= 注入逻辑 =================
+    const HIDE_KEY = "isNewsBlockHide";
 
-    // 创建 MutationObserver 监听 DOM 变化
-    let observer = new MutationObserver((mutationsList, observer) => {
-      for (let mutation of mutationsList) {
-        console.log("HTML 内容发生变化");
-        if (
-          mutation.type === "attributes" ||
-          mutation.type === "subtree" ||
-          mutation.type === "childList"
-        ) {
-          try {
-            // 获取好友页面按钮
-            let friendsBtn = document.getElementsByClassName(
-              "_1TdaAqMFadi0UTqilrkelR"
-            )[0];
-            // 获取新闻块元素
-            let newsBlock = document.getElementsByClassName(
-              "_17uEBe5Ri8TMsnfELvs8-N"
-            )[0];
-            // console.log(newsBlock);
-            try {
-              let isHideBtn = document.getElementsByClassName("hideBtn")[0];
-              if (isHideBtn) isInjection = false;
-            } catch (e) {
-              // console.log(e);
-            }
-            let isInjectionMomo =
-              document.getElementsByClassName("momoIconIsInject")[0]; // 标记按钮是否已插入
-            if (friendsBtn && !isInjectionMomo) {
-              friendsBtn.innerHTML = momoIcon;
-            }
-            // 读取 localStorage 并决定是否隐藏新闻块
-            let isHidden = JSON.parse(localStorage.getItem("isNewsBlockHide"));
-            if (newsBlock) {
-              newsBlock.style.display = isHidden ? "none" : "block";
-            }
-
-            // 如果新闻块存在且按钮尚未插入，则插入隐藏按钮
-            if (newsBlock && isInjection) {
-              hideBtn.innerHTML = isHidden ? invisibleIcon : visibleIcon;
-              newsBlock.insertAdjacentElement("afterend", hideBtn);
-              isInjection = false;
-            }
-
-            // 绑定按钮点击事件，切换新闻块的可见状态
-            if (!isInjection) {
-              hideBtn.onclick = () => {
-                let currentState = JSON.parse(
-                  localStorage.getItem("isNewsBlockHide")
-                );
-                localStorage.setItem(
-                  "isNewsBlockHide",
-                  JSON.stringify(!currentState)
-                );
-                newsBlock.style.display = !currentState ? "none" : "block";
-                hideBtn.innerHTML = !currentState ? invisibleIcon : visibleIcon;
-              };
-            }
-          } catch (e) {
-            console.log("获取元素失败: " + e);
-          }
-        }
+    function readHidden() {
+      try {
+        return JSON.parse(localStorage.getItem(HIDE_KEY)) === true;
+      } catch (e) {
+        return false;
       }
-    });
+    }
 
-    // 配置观察选项（监听子元素变化、属性变化等）
-    let config = { childList: true, subtree: true, attributes: true };
+    function writeHidden(v) {
+      try {
+        localStorage.setItem(HIDE_KEY, JSON.stringify(v));
+      } catch (e) {
+        /* 隐私模式等场景下写不进去就算了 */
+      }
+    }
 
-    // 开始监听 DOM 变化
-    observer.observe(getHtmlBody, config);
+    let isHidden = readHidden();
+
+    function renderToggle(newsBlock) {
+      newsBlock.style.display = isHidden ? "none" : "";
+      hideBtn.innerHTML = isHidden ? invisibleIcon : visibleIcon;
+      hideBtn.title = isHidden ? "显示动态" : "隐藏动态";
+    }
+
+    // 按钮被 Steam 重渲染删掉后，这里会重新插回去
+    function ensureToggle(newsBlock) {
+      if (!hideBtn.isConnected) {
+        hideBtn.onclick = function () {
+          isHidden = !isHidden;
+          writeHidden(isHidden);
+          renderToggle(newsBlock);
+        };
+        newsBlock.insertAdjacentElement("afterend", hideBtn);
+      }
+      renderToggle(newsBlock);
+    }
+
+    // 只往好友按钮里追加一个兄弟节点，不动 Steam 自己的子元素（否则会打断 React 的 diff）
+    function ensureMomo(friendsBtn) {
+      if (friendsBtn.querySelector(".momoIconIsInject")) return;
+      let host = document.createElement("span");
+      host.className = "momoIconIsInject";
+      host.innerHTML = momoIcon;
+      friendsBtn.classList.add("momoBtnHost");
+      friendsBtn.appendChild(host);
+    }
+
+    function pass() {
+      let friendsBtn = document.getElementsByClassName("_1TdaAqMFadi0UTqilrkelR")[0];
+      let newsBlock = document.getElementsByClassName("_17uEBe5Ri8TMsnfELvs8-N")[0];
+      if (friendsBtn) ensureMomo(friendsBtn);
+      if (newsBlock) ensureToggle(newsBlock);
+    }
+
+    // 同一帧内的多次 DOM 变动只处理一次，避免主线程被打爆
+    let queued = false;
+    function schedule() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () {
+        queued = false;
+        try {
+          pass();
+        } catch (e) {
+          /* 页面结构变化期间静默跳过 */
+        }
+      });
+    }
+
+    let observer = new MutationObserver(schedule);
+    observer.observe(document.body, { childList: true, subtree: true });
+    schedule();
   }
 
-  // 调用函数，启动监听
   allElementMonitor();
 })();
