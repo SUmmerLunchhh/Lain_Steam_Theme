@@ -26,6 +26,8 @@
   let lastTick = 0;
   let lastHovered = null;
   let hideTimer = null;
+  let humGain = null; // 底噪单独一条增益，进后台时只淡它
+  let activeUntil = 0; // 当前一次性音效预计播完的时间点
 
   function ensureCtx() {
     if (ctx) return ctx;
@@ -81,9 +83,13 @@
 
     noise.connect(lowpass);
     lowpass.connect(noiseGain);
-    noiseGain.connect(master);
+    humGain = ctx.createGain();
+    humGain.gain.value = 1;
+    humGain.connect(master);
+
+    noiseGain.connect(humGain);
     osc.connect(oscGain);
-    oscGain.connect(master);
+    oscGain.connect(humGain);
 
     noise.start();
     osc.start();
@@ -147,6 +153,7 @@
     src.connect(gain);
     gain.connect(out);
     src.start(0);
+    activeUntil = Math.max(activeUntil, ctx.currentTime + startupBuffer.duration);
   }
 
   function unlock() {
@@ -293,6 +300,7 @@
     src.connect(gain);
     gain.connect(out);
     src.start(0);
+    activeUntil = Math.max(activeUntil, ctx.currentTime + buf.duration);
   }
 
   // 顶部导航条：一个容器里同时有「商店」和「社区」（英文界面则是 STORE / COMMUNITY）
@@ -363,33 +371,43 @@
     out.gain.linearRampToValueAtTime(muted ? 0 : 1, t + 0.25);
   }
 
+  // 底噪淡入/淡出（一次性音效不受影响）
+  function setHum(on) {
+    if (!ctx || !humGain) return;
+    const t = ctx.currentTime;
+    humGain.gain.cancelScheduledValues(t);
+    humGain.gain.setValueAtTime(humGain.gain.value, t);
+    humGain.gain.linearRampToValueAtTime(on ? 1 : 0, t + 0.3);
+  }
+
+  // 等当前一次性音效播完再挂起，避免把话说到一半掐掉
+  function suspendWhenIdle() {
+    clearTimeout(hideTimer);
+    const remain = ctx && ctx.state === "running" ? Math.max(0, activeUntil - ctx.currentTime) : 0;
+    hideTimer = setTimeout(function () {
+      if (!ctx || ctx.state !== "running") return;
+      try {
+        ctx.suspend();
+      } catch (e) {}
+    }, Math.max(400, remain * 1000 + 200));
+  }
+
   function handleVisibility() {
     if (document.hidden) {
-      // 稍微延后一点，避免切窗口的瞬间把尾音掐断
-      clearTimeout(hideTimer);
-      hideTimer = setTimeout(function () {
-        setOutputMuted(true);
-        if (ctx && ctx.state === "running") {
-          try {
-            ctx.suspend();
-          } catch (e) {}
-        }
-      }, 400);
+      // 只淡出底噪；正在播的切换音/开机音让它播完
+      setHum(false);
+      suspendWhenIdle();
     } else {
       clearTimeout(hideTimer);
       if (!ensureCtx()) return;
       if (ctx.state === "suspended") ctx.resume();
       setOutputMuted(false);
+      setHum(true);
       if (unlocked) startHum();
     }
   }
 
   document.addEventListener("visibilitychange", handleVisibility, false);
-  window.addEventListener("pagehide", function () {
-    clearTimeout(hideTimer);
-    setOutputMuted(true);
-  });
-
   // 页面一加载就试一次；如果被自动播放策略拦住，等第一次交互再放
   (function tryBoot() {
     if (!ensureCtx()) return;
