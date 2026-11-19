@@ -327,10 +327,12 @@
     let el = target;
     for (let i = 0; i < 4 && el && el !== document.body; i++) {
       const r = el.getBoundingClientRect();
-      if (r.width > 40 && r.height >= 18 && r.height <= 90) {
+      // 必须是个"小方块"：宽度受限，避免命中横跨底栏的容器
+      if (r.width >= 40 && r.width <= 340 && r.height >= 18 && r.height <= 90) {
         const nearRight = window.innerWidth - r.right < 340;
         const nearBottom = window.innerHeight - r.bottom < 110;
-        if (nearRight && nearBottom) {
+        const inRightHalf = r.left > window.innerWidth / 2;
+        if (nearRight && nearBottom && inRightHalf) {
           const t = (el.innerText || "").trim();
           if (t.length <= 24) return true;
         }
