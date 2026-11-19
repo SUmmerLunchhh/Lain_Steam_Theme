@@ -28,7 +28,7 @@
         },
         {
             "MatchRegexString": "^notificationtoasts_",
-            "TargetCss": "./libraryroot.custom.css"
+            "TargetCss": "./css/toasts.css"
         },
         {
             "MatchRegexString": "^SteamBrowser_Find$",
@@ -97,7 +97,7 @@
     "author": "SUmmerLunch",
     "description": "A Serial Experiments Lain themed Steam client skin. Based on blueArchiveSteamSkin.",
     "name": "Lain",
-    "version": "1.4.1",
+    "version": "1.5.0",
     "github": {
         "owner": "SUmmerLunchhh",
         "repo_name": "Lain_Steam_Theme"

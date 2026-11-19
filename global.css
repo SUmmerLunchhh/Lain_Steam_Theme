@@ -76,3 +76,13 @@ body {
 ::-webkit-scrollbar-corner {
     background: transparent;
 }
+
+/* ===== 按下时往里陷 1px，90 年代按钮的手感 ===== */
+button:active,
+a:active,
+[role="button"]:active,
+.DialogButton:active,
+.SVGIcon_Button:active,
+.contextMenuItem:active {
+    transform: translate(1px, 1px);
+}

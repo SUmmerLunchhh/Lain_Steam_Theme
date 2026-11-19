@@ -27,6 +27,8 @@
   let lastHovered = null;
   let hideTimer = null;
   let humGain = null; // 底噪单独一条增益，进后台时只淡它
+  let humBase = 1; // 底噪的目标电平（0=进后台，1=正常）
+  let duckTimer = null;
   let activeUntil = 0; // 当前一次性音效预计播完的时间点
 
   function ensureCtx() {
@@ -95,7 +97,7 @@
     osc.start();
   }
 
-  function blip(freq, dur, type, gain) {
+  function blip(freq, dur, type, gain, pan) {
     if (!ctx || !master) return;
     if (ctx.state === "suspended") ctx.resume();
     const now = ctx.currentTime;
@@ -107,7 +109,14 @@
     env.gain.exponentialRampToValueAtTime(gain, now + 0.006);
     env.gain.exponentialRampToValueAtTime(0.0001, now + dur);
     osc.connect(env);
-    env.connect(master);
+    if (ctx.createStereoPanner) {
+      const panner = ctx.createStereoPanner();
+      panner.pan.setValueAtTime(pan || 0, now);
+      env.connect(panner);
+      panner.connect(master);
+    } else {
+      env.connect(master);
+    }
     osc.start(now);
     osc.stop(now + dur + 0.02);
   }
@@ -154,6 +163,7 @@
     gain.connect(out);
     src.start(0);
     activeUntil = Math.max(activeUntil, ctx.currentTime + startupBuffer.duration);
+    duckHum(startupBuffer.duration);
   }
 
   function unlock() {
@@ -223,7 +233,8 @@
       const now = performance.now();
       if (now - lastTick < 90) return; // 划过一片按钮时不要连响
       lastTick = now;
-      blip(1600, 0.035, "square", 0.18);
+      const pan = (e.clientX / window.innerWidth) * 1.2 - 0.6;
+      blip(1600, 0.035, "square", 0.18, pan);
     },
     true
   );
@@ -250,7 +261,8 @@
         return;
       }
       if (!clickableOf(e.target)) return;
-      blip(660, 0.07, "triangle", 0.22);
+      const pan = (e.clientX / window.innerWidth) * 1.2 - 0.6;
+      blip(660, 0.07, "triangle", 0.22, pan);
     },
     true
   );
@@ -301,6 +313,7 @@
     gain.connect(out);
     src.start(0);
     activeUntil = Math.max(activeUntil, ctx.currentTime + buf.duration);
+    duckHum(buf.duration);
   }
 
   // 顶部导航条：一个容器里同时有「商店」和「社区」（英文界面则是 STORE / COMMUNITY）
@@ -375,11 +388,30 @@
 
   // 底噪淡入/淡出（一次性音效不受影响）
   function setHum(on) {
+    humBase = on ? 1 : 0;
     if (!ctx || !humGain) return;
     const t = ctx.currentTime;
     humGain.gain.cancelScheduledValues(t);
     humGain.gain.setValueAtTime(humGain.gain.value, t);
-    humGain.gain.linearRampToValueAtTime(on ? 1 : 0, t + 0.3);
+    humGain.gain.linearRampToValueAtTime(humBase, t + 0.3);
+  }
+
+  // 播一次性音效时把底噪压到 30%，播完再慢慢抬回来
+  function duckHum(durationSec) {
+    if (!ctx || !humGain) return;
+    const t = ctx.currentTime;
+    humGain.gain.cancelScheduledValues(t);
+    humGain.gain.setValueAtTime(humGain.gain.value, t);
+    humGain.gain.linearRampToValueAtTime(humBase * 0.3, t + 0.08);
+
+    clearTimeout(duckTimer);
+    duckTimer = setTimeout(function () {
+      if (!ctx || !humGain) return;
+      const t2 = ctx.currentTime;
+      humGain.gain.cancelScheduledValues(t2);
+      humGain.gain.setValueAtTime(humGain.gain.value, t2);
+      humGain.gain.linearRampToValueAtTime(humBase, t2 + 0.5);
+    }, Math.max(300, durationSec * 1000));
   }
 
   // 等当前一次性音效播完再挂起，避免把话说到一半掐掉

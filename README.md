@@ -16,6 +16,7 @@ Built on the skeleton of [blueArchiveSteamSkin](https://github.com/EugeneXXXie/b
 - Consistent palette across titles, icons, context menus and Settings
 - A show/hide button on the activity block; the state is remembered locally
 - The Navi icon on the Friends button
+- Notifications and achievement toasts restyled as an incoming signal: a light band sweeps across on entry and a receiving indicator blinks in the corner
 
 **Motion** (three tiers)
 
