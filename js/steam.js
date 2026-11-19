@@ -60,7 +60,7 @@
     function renderToggle(newsBlock) {
       newsBlock.style.display = isHidden ? "none" : "";
       hideBtn.innerHTML = isHidden ? invisibleIcon : visibleIcon;
-      hideBtn.title = isHidden ? "显示动态" : "隐藏动态";
+      hideBtn.title = isHidden ? "Show activity" : "Hide activity";
     }
 
     // 按钮被 Steam 重渲染删掉后，这里会重新插回去

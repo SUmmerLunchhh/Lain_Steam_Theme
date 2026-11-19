@@ -49,9 +49,9 @@
     ],
     "UseDefaultPatches": false,
     "Conditions": {
-        "CRT 效果（扫描线 / 闪烁 / 噪点）": {
-            "description": "关掉之后界面更安静，也能省一些 GPU。低配机器或觉得闪眼时请关闭。",
-            "tab": "效果",
+        "CRT Effects (scanlines / flicker / noise)": {
+            "description": "Turn off for a quieter interface and less GPU load. Recommended on low-end machines or if the flicker bothers you.",
+            "tab": "Effects",
             "default": "yes",
             "values": {
                 "yes": {
@@ -68,9 +68,9 @@
                 }
             }
         },
-        "音效（底噪 / 悬停 / 点击）": {
-            "description": "用 WebAudio 现场合成的 CRT 底噪和按键音，不带音频文件。第一次点击后才出声。不想听可以关掉。",
-            "tab": "效果",
+        "Sound (hum / hover / click)": {
+            "description": "Synthesised CRT hum and UI clicks, generated with WebAudio - no audio files involved. Starts after your first click. Turn off if you want silence.",
+            "tab": "Effects",
             "default": "yes",
             "values": {
                 "yes": {
@@ -89,9 +89,9 @@
         }
     },
     "author": "SUmmerLunch",
-    "description": "Serial Experiments Lain 风格的 Steam 主题（基于 blueArchiveSteamSkin 修改）",
+    "description": "A Serial Experiments Lain themed Steam client skin. Based on blueArchiveSteamSkin.",
     "name": "Lain",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "github": {
         "owner": "SUmmerLunchhh",
         "repo_name": "Lain_Steam_Theme"
