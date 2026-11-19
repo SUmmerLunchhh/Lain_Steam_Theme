@@ -2,18 +2,32 @@
 
 # Lain — a Steam theme
 
-A *Serial Experiments Lain* theme for the Steam client: near-black background, warm beige text, dusty-pink borders, full-width labels, and a light CRT scanline/flicker overlay.
+A *Serial Experiments Lain* theme for the Steam client: near-black background, phosphor cyan and dusty pink, full-width labels, with CRT scanlines, film grain and a power-on flash layered on top. The look deliberately targets that 1998 machine — desaturated, grainy and slightly sluggish — rather than modern neon cyberpunk.
 
 Built on the skeleton of [blueArchiveSteamSkin](https://github.com/EugeneXXXie/blueArchiveSteamSkin) by EugeneXXXie (MIT). The file layout and a good part of the settings-page styling come from that project.
 
 ## What you get
 
+**Interface**
+
 - Library, Store, Community, Downloads and the friends list all restyled
+- 90s window chrome: inset high-light and shadow instead of modern rounded corners
+- Hover feedback jumps with `steps()` — no easing curve, because that era reacted instantly
 - Consistent palette across titles, icons, context menus and Settings
 - A show/hide button on the activity block; the state is remembered locally
 - The momo icon on the Friends button
-- Sound: startup chime, CRT hum, hover and click feedback
-- Navigation sounds for Store / Library / Community / Profile, plus the Friends & Chat button in the bottom-right corner
+
+**Motion** (three tiers)
+
+- **CRT power-on flash**: a bright line unfolds into the full screen, then fades — 2.4 s, timed with the startup chime
+- Scanlines, film grain and a slow rolling refresh band
+- **Text decode**: hovering a label briefly turns it into `▓▒░01ｱｲ` before resolving letter by letter
+- The Full tier adds heavier scanlines, a fast refresh band, a full-screen jolt every 14–24 s, and menu borders that draw themselves in
+
+**Sound**
+
+- Startup chime, CRT hum, hover and click feedback
+- Distinct navigation sounds for Store / Library / Community / Profile, plus the Friends & Chat button in the bottom-right corner
 
 ## Installation
 
@@ -42,10 +56,15 @@ Steam → Settings → Themes → pick **Lain**.
 
 ## Theme settings
 
-Under Settings → Themes → Lain → **Effects**:
+UI strings are English (a store requirement). Under Steam → Settings → Themes → Lain → **Effects**:
 
-- **Effects** has three tiers — `Off` (cheapest), `Subtle` (default: light scanlines, film grain, text-decode on hover), `Full` (heavier scanlines, a fast 1.6 s refresh band, a full-screen jolt every 14–24 s, and menu borders that draw themselves in)
+- **Effects** has three tiers
+  - `Off` — everything off, cheapest. Disables the power-on flash too.
+  - `Subtle` (default) — light scanlines, film grain, a slow refresh band and text-decode on hover
+  - `Full` — heavier scanlines, a fast refresh band, an occasional full-screen jolt and self-drawing menu borders
 - **Sound** (hum / hover / click) — turn off for silence
+
+The tier is handed to JavaScript through a CSS custom property (`--lain-tier`), so with `Off` the decode and jolt code never starts at all — it isn't running invisibly.
 
 ## Sound assets
 
@@ -59,6 +78,8 @@ If you swap a sound you have to update both sides; see [music/README.md](music/R
 
 - Steam reshuffles its CSS class hashes on every major update (things like `_1TdaAqMFadi0UTqilrkelR`). Some areas will lose styling when that happens and the theme has to be updated.
 - The startup sound is subject to Chromium's autoplay policy: if the page hasn't received a real mouse/keyboard interaction yet, playback is deferred until your first click. That's a hard browser rule, so the chime sometimes feels like it lands a beat late.
+- Text-decode temporarily rewrites Steam's own text nodes; React writes them back on the next render. This is fine in practice — if a label ever gets stuck mid-decode, open an issue.
+- The Full tier's jolt applies a transform to `body`, so fixed-position elements shift with it for those 160 ms. That's part of the effect.
 - Only tested on Windows with a recent Millennium build.
 
 ## License
