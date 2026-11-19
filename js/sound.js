@@ -426,22 +426,55 @@
     }, Math.max(400, remain * 1000 + 200));
   }
 
-  function handleVisibility() {
-    if (document.hidden) {
-      // 只淡出底噪；正在播的切换音/开机音让它播完
-      setHum(false);
-      suspendWhenIdle();
-    } else {
-      clearTimeout(hideTimer);
-      if (!ensureCtx()) return;
-      if (ctx.state === "suspended") ctx.resume();
-      setOutputMuted(false);
-      setHum(true);
-      if (unlocked) startHum();
-    }
+  // 进后台：只淡出底噪，正在播的切换音/开机音让它播完
+  function goBackground() {
+    setHum(false);
+    suspendWhenIdle();
   }
 
-  document.addEventListener("visibilitychange", handleVisibility, false);
+  // 回到前台
+  function comeForeground() {
+    clearTimeout(hideTimer);
+    if (!ensureCtx()) return;
+    if (ctx.state === "suspended") ctx.resume();
+    setOutputMuted(false);
+    setHum(true);
+    if (unlocked) startHum();
+  }
+
+  // 窗口被别的程序盖住时页面仍是 visible，只能靠失焦判断
+  let blurTimer = null;
+
+  window.addEventListener(
+    "blur",
+    function () {
+      clearTimeout(blurTimer);
+      blurTimer = setTimeout(function () {
+        // 宽限期内如果又重新获得焦点，就当没发生
+        if (document.hasFocus() && !document.hidden) return;
+        goBackground();
+      }, 600);
+    },
+    false
+  );
+
+  window.addEventListener(
+    "focus",
+    function () {
+      clearTimeout(blurTimer);
+      comeForeground();
+    },
+    false
+  );
+
+  document.addEventListener(
+    "visibilitychange",
+    function () {
+      if (document.hidden) goBackground();
+      else comeForeground();
+    },
+    false
+  );
   // 页面一加载就试一次；如果被自动播放策略拦住，等第一次交互再放
   (function tryBoot() {
     if (!ensureCtx()) return;

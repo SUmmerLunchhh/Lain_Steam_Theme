@@ -81,6 +81,7 @@ If you swap a sound you have to update both sides; see [music/README.md](music/R
 - The startup sound is subject to Chromium's autoplay policy: if the page hasn't received a real mouse/keyboard interaction yet, playback is deferred until your first click. That's a hard browser rule, so the chime sometimes feels like it lands a beat late.
 - Text-decode temporarily rewrites Steam's own text nodes; React writes them back on the next render. This is fine in practice — if a label ever gets stuck mid-decode, open an issue.
 - The Full tier's jolt applies a transform to `body`, so fixed-position elements shift with it for those 160 ms. That's part of the effect.
+- When the window loses focus — fully covered by another app, or you click into a child Steam window — the hum fades out and the audio context is suspended, with a 600 ms grace period. It resumes when you come back.
 - Only tested on Windows with a recent Millennium build.
 
 ## License
