@@ -385,3 +385,16 @@ body:has(._3cAh02omVEUuC1wX2K36Ma) ._3cAh02omVEUuC1wX2K36Ma {
 .ModalDialogBody:has(.X3pN_ESh0aoxmm2nK65Hu) .X3pN_ESh0aoxmm2nK65Hu {
     background: var(--friend-list-light-blue) !important;
 }
+
+/* ===== 90 年代窗口：对话框斜面边框 ===== */
+.DialogContent {
+    border-radius: 2px;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.14),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.85);
+}
+
+/* 设置页左侧导航：hover 瞬跳 */
+body:has(._1-vlriAtKYDViAEunue4VO) ._1-vlriAtKYDViAEunue4VO {
+    transition: background-color 0.08s steps(2, end), border-color 0.08s steps(2, end),
+        color 0.08s steps(2, end) !important;
+}

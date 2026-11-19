@@ -37,3 +37,14 @@ body.ContextMenuPopupBody .PP7LM0Ow1K5qkR8WElLpt.visible ._2EstNjFIIZm_WUSKm5Wt7
     background: var(--friend-list-bg-color) !important;
     transform: translateY(0);
 }
+
+/* ===== 90 年代窗口：斜面边框 + 瞬跳 hover ===== */
+body.ContextMenuPopupBody ._2EstNjFIIZm_WUSKm5Wt7n {
+    border-radius: 2px !important;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.16),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.85) !important;
+}
+
+._3pofGqV0buiKAfMPEs3_82 ._1n7Wloe5jZ6fSuvV18NNWI {
+    transition: background-color 0.08s steps(2, end), color 0.08s steps(2, end) !important;
+}

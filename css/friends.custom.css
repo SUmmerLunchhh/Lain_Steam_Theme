@@ -439,3 +439,14 @@ body:has(#popup_target) .title-area-icon div {
 body:has(#popup_target) .title-area-icon .SVGIcon_X_Line line {
     stroke: var(--text-color-dark);
 }
+
+/* ===== 聊天里的右键菜单：斜面边框 + 瞬跳 ===== */
+.popup_chat_frame ._2EstNjFIIZm_WUSKm5Wt7n {
+    border-radius: 2px !important;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.16),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.85) !important;
+}
+
+.popup_chat_frame ._1n7Wloe5jZ6fSuvV18NNWI {
+    transition: background-color 0.08s steps(2, end), color 0.08s steps(2, end) !important;
+}

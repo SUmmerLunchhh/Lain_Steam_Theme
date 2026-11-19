@@ -114,3 +114,17 @@ body:has(._2uHOsFCB_RZYZFsMQiw28v) ._2uHOsFCB_RZYZFsMQiw28v {
 body:has(.cam5nVZiJHP17RZlbXzmE) .cam5nVZiJHP17RZlbXzmE {
     color: var(--nav-text-color);
 }
+
+/* ===== 90 年代窗口：内亮外暗的斜面边框 ===== */
+body.ContextMenuPopupBody ._2EstNjFIIZm_WUSKm5Wt7n {
+    border-radius: 2px !important;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.16),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.85) !important;
+}
+
+/* hover 不要缓动，直接跳到目标色 —— 那个年代的界面反馈是「立刻」 */
+body.ContextMenuPopupBody ._2EstNjFIIZm_WUSKm5Wt7n,
+.PP7LM0Ow1K5qkR8WElLpt,
+._1n7Wloe5jZ6fSuvV18NNWI {
+    transition: background-color 0.08s steps(2, end), color 0.08s steps(2, end) !important;
+}

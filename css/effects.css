@@ -1,43 +1,74 @@
 /* ============================================================
-   CRT 效果层：噪点网格 + 扫描光束 + 轻微闪烁
+   CRT 效果层
    ------------------------------------------------------------
-   单独成文件，是为了能在「设置 → 主题 → Lain → 效果」里关掉。
-   低配机器、或者觉得闪眼的时候，关掉可省不少 GPU。
+   · 扫描线（1px 暗线 / 3px 周期，肉眼可见的 CRT 纹理）
+   · 缓慢滚动的「场刷新带」
+   · 低幅度闪烁
+   · 开机时一次性的 CRT 点亮
+   觉得过于强烈的话，在主题设置里整个关掉。
    ============================================================ */
 
-@keyframes cyberScanline {
+@keyframes fieldRoll {
     0% {
-        transform: translateY(-100%);
+        transform: translateY(-220px);
     }
-    48% {
-        transform: translateY(1100vh);
-    }
-    50% {
-        transform: translateY(1100vh);
-    }
-    98%,
     100% {
-        transform: translateY(-100%);
+        transform: translateY(calc(100vh + 220px));
     }
 }
 
-/* 只动画 opacity：以前的版本每帧改 filter: drop-shadow，
-   等于每帧重绘整个屏幕，代价很大，视觉上却几乎看不出差别。 */
+/* 只动 opacity：改 filter 会让浏览器每帧重绘整屏 */
 @keyframes crtFlicker {
     0%,
     90%,
     95%,
     100% {
-        opacity: 0.2;
+        opacity: 1;
     }
     91% {
-        opacity: 0.08;
+        opacity: 0.55;
     }
     92% {
-        opacity: 0.35;
+        opacity: 1;
     }
     93% {
-        opacity: 0.12;
+        opacity: 0.7;
+    }
+}
+
+/* 开机：一条亮线展开成整屏，然后淡出 */
+@keyframes crtBoot {
+    0% {
+        transform: scaleY(0.002);
+        opacity: 0;
+    }
+    /* 亮线亮起 */
+    7% {
+        transform: scaleY(0.002);
+        opacity: 1;
+    }
+    /* 停一下，让人意识到有一根线 */
+    14% {
+        transform: scaleY(0.004);
+        opacity: 1;
+    }
+    /* 展开成整屏 */
+    58% {
+        transform: scaleY(1);
+        opacity: 0.45;
+    }
+    72% {
+        transform: scaleY(1);
+        opacity: 0.18;
+    }
+    /* 轻微回闪，像信号刚稳定下来 */
+    80% {
+        transform: scaleY(1);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scaleY(1);
+        opacity: 0;
     }
 }
 
@@ -45,38 +76,116 @@ body {
     position: relative;
 }
 
-/* 1. 静态噪点网格底层 */
+/* 开机点亮：只跑一次，结束停在 opacity 0 */
+html::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 255, 204, 0.35),
+        rgba(235, 255, 255, 0.85) 50%,
+        rgba(0, 255, 204, 0.35)
+    );
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 1000000;
+    transform-origin: center center;
+    animation: crtBoot 2.4s cubic-bezier(0.15, 0.9, 0.25, 1) 1 both;
+}
+
+/* 1. 扫描线：每 3px 一条 1px 暗线，这是 CRT 最典型的质地 */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.2) 50%),
-        linear-gradient(90deg, rgba(255, 0, 0, 0.015), rgba(0, 255, 0, 0.005), rgba(0, 0, 255, 0.015));
-    background-size: 100% 2px, 4px 100%;
+    background: repeating-linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.09) 0px,
+        rgba(0, 0, 0, 0.09) 1px,
+        rgba(0, 0, 0, 0) 1px,
+        rgba(0, 0, 0, 0) 4px
+    );
     pointer-events: none;
     z-index: 999998;
     animation: crtFlicker 12s infinite;
 }
 
-/* 2. 动态 1 像素扫描光束层 */
+/* 2. 场刷新带：9 秒滚一遍 */
 body::after {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(0, 255, 200, 0), rgba(0, 255, 166, 0.484) 50%, rgba(0, 255, 200, 0));
-    box-shadow: 0 0 6px rgb(0, 255, 136), 0 0 1px rgba(255, 255, 255, 0.6);
-    animation: cyberScanline 7s linear infinite;
+    height: 220px;
+    background: linear-gradient(
+        180deg,
+        rgba(190, 255, 250, 0) 0%,
+        rgba(190, 255, 250, 0.035) 42%,
+        rgba(200, 255, 252, 0.06) 50%,
+        rgba(190, 255, 250, 0.035) 58%,
+        rgba(190, 255, 250, 0) 100%
+    );
+    animation: fieldRoll 9s linear infinite;
     pointer-events: none;
     z-index: 999999;
 }
 
-/* 系统里开了「减少动态效果」就自动静止，不必手动去关 */
+/* 3. 胶片噪点：64×64 灰度贴图，overlay 混合让明暗两端都参与 */
+html::after {
+    content: "";
+    position: fixed;
+    inset: -64px; /* 留出位移余量，避免抖动时露边 */
+    background: url(../imgs/grain.png) repeat;
+    background-size: 64px 64px;
+    opacity: 0.14;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 999996;
+    animation: grainShift 0.6s steps(1, end) infinite;
+}
+
+/* 8 帧跳位：只动 transform，交给合成器，不触发重绘 */
+@keyframes grainShift {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    12.5% {
+        transform: translate3d(-13px, 7px, 0);
+    }
+    25% {
+        transform: translate3d(9px, -11px, 0);
+    }
+    37.5% {
+        transform: translate3d(-5px, -5px, 0);
+    }
+    50% {
+        transform: translate3d(17px, 3px, 0);
+    }
+    62.5% {
+        transform: translate3d(-7px, 13px, 0);
+    }
+    75% {
+        transform: translate3d(11px, -9px, 0);
+    }
+    87.5% {
+        transform: translate3d(-15px, 5px, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* 系统开了「减少动态效果」就全部静止 */
 @media (prefers-reduced-motion: reduce) {
     body::before,
-    body::after {
+    body::after,
+    html::before,
+    html::after {
         animation: none;
+    }
+    html::before {
+        opacity: 0;
     }
 }
