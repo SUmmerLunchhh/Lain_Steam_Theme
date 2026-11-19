@@ -1,0 +1,93 @@
+/* ============================================================
+   Full 档：在 Subtle 基础上加重
+   · 扫描线更密更暗
+   · 场刷新带 1.6 秒扫一遍
+   · 每 14-24 秒一次整屏抖动（信号错位）
+   · 右键菜单边框「绘制」
+   这是给「就想看效果」的人用的，默认档是 Subtle。
+   ============================================================ */
+
+@import url(effects-subtle.css);
+
+body {
+    --lain-tier: full;
+}
+
+/* 更密的扫描线 */
+body::before {
+    background: repeating-linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.16) 0px,
+        rgba(0, 0, 0, 0.16) 1px,
+        rgba(0, 0, 0, 0) 1px,
+        rgba(0, 0, 0, 0) 2px
+    );
+}
+
+/* 快得多的场刷新带 */
+body::after {
+    height: 240px;
+    background: linear-gradient(
+        180deg,
+        rgba(190, 255, 250, 0) 0%,
+        rgba(190, 255, 250, 0.06) 42%,
+        rgba(200, 255, 252, 0.12) 50%,
+        rgba(190, 255, 250, 0.06) 58%,
+        rgba(190, 255, 250, 0) 100%
+    );
+    animation-duration: 1.6s;
+}
+
+/* 整屏抖动：两帧错位，像信号瞬间失步 */
+@keyframes lainJolt {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    33% {
+        transform: translate3d(-7px, 0, 0);
+    }
+    66% {
+        transform: translate3d(5px, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+body.lain-jolt {
+    animation: lainJolt 0.16s steps(3, end) 1;
+}
+
+/* 右键菜单：边框从左上角开始画出来 */
+@keyframes lainDrawBorder {
+    from {
+        clip-path: inset(0 100% 100% 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.PP7LM0Ow1K5qkR8WElLpt {
+    position: relative;
+}
+
+.PP7LM0Ow1K5qkR8WElLpt::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border: 1px solid rgba(0, 255, 204, 0.5);
+    clip-path: inset(0 100% 100% 0);
+    animation: lainDrawBorder 0.24s steps(8, end) 1 forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.lain-jolt {
+        animation: none;
+    }
+    .PP7LM0Ow1K5qkR8WElLpt::after {
+        animation: none;
+        clip-path: inset(0 0 0 0);
+    }
+}

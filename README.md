@@ -42,10 +42,10 @@ Steam → Settings → Themes → pick **Lain**.
 
 ## Theme settings
 
-Under Settings → Themes → Lain → **Effects** you can turn off:
+Under Settings → Themes → Lain → **Effects**:
 
-- **CRT Effects** (scanlines / flicker / noise) — quieter interface, less GPU load, worth disabling on low-end machines
-- **Sound** (hum / hover / click) — no audio at all
+- **Effects** has three tiers — `Off` (cheapest), `Subtle` (default: light scanlines, film grain, text-decode on hover), `Full` (heavier scanlines, a fast 1.6 s refresh band, a full-screen jolt every 14–24 s, and menu borders that draw themselves in)
+- **Sound** (hum / hover / click) — turn off for silence
 
 ## Sound assets
 

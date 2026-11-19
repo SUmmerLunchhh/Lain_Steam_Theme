@@ -74,6 +74,8 @@
 
 body {
     position: relative;
+    /* JS 靠这个自定义属性判断当前档位 */
+    --lain-tier: subtle;
 }
 
 /* 开机点亮：只跑一次，结束停在 opacity 0 */

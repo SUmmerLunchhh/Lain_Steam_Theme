@@ -49,21 +49,27 @@
     ],
     "UseDefaultPatches": false,
     "Conditions": {
-        "CRT Effects (scanlines / flicker / noise)": {
-            "description": "Turn off for a quieter interface and less GPU load. Recommended on low-end machines or if the flicker bothers you.",
+        "Effects": {
+            "description": "Off / Subtle / Full. Subtle adds a light CRT texture plus text-decode on hover; Full adds heavier scanlines, a fast refresh band, the occasional signal jolt and drawing menu borders. Pick Subtle if you are unsure.",
             "tab": "Effects",
-            "default": "yes",
+            "default": "Subtle",
             "values": {
-                "yes": {
-                    "TargetCss": {
-                        "affects": ["^Steam$"],
-                        "src": "./css/effects.css"
-                    }
-                },
-                "no": {
+                "Off": {
                     "TargetCss": {
                         "affects": ["^Steam$"],
                         "src": "./css/effects-off.css"
+                    }
+                },
+                "Subtle": {
+                    "TargetCss": {
+                        "affects": ["^Steam$"],
+                        "src": "./css/effects-subtle.css"
+                    }
+                },
+                "Full": {
+                    "TargetCss": {
+                        "affects": ["^Steam$"],
+                        "src": "./css/effects-full.css"
                     }
                 }
             }
@@ -91,7 +97,7 @@
     "author": "SUmmerLunch",
     "description": "A Serial Experiments Lain themed Steam client skin. Based on blueArchiveSteamSkin.",
     "name": "Lain",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "github": {
         "owner": "SUmmerLunchhh",
         "repo_name": "Lain_Steam_Theme"

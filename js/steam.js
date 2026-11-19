@@ -114,4 +114,113 @@
   }
 
   allElementMonitor();
+
+  // ================= 效果档位 =================
+  // 档位由 CSS 通过 body 上的 --lain-tier 告诉 JS；没设就是 Off
+  function effectsTier() {
+    try {
+      return getComputedStyle(document.body).getPropertyValue("--lain-tier").trim();
+    } catch (e) {
+      return "";
+    }
+  }
+
+  // ---------- 文字解码 ----------
+  const DECODE_CHARS = "\u2593\u2592\u2591\u258801\uFF71\uFF72\uFF73\uFF74\uFF75<>/\\|";
+
+  function decodeLeaf(el, frames, step) {
+    if (!el || el.dataset.lainDec === "1") return;
+    const original = el.textContent;
+    if (!original || original.length < 2 || original.length > 48) return;
+
+    el.dataset.lainDec = "1";
+    let frame = 0;
+    const timer = setInterval(function () {
+      frame++;
+      if (frame >= frames) {
+        clearInterval(timer);
+        el.textContent = original;
+        el.dataset.lainDec = "0";
+        return;
+      }
+      const keep = Math.floor((frame / frames) * original.length);
+      let out = "";
+      for (let i = 0; i < original.length; i++) {
+        out +=
+          i < keep
+            ? original.charAt(i)
+            : DECODE_CHARS.charAt(Math.floor(Math.random() * DECODE_CHARS.length));
+      }
+      el.textContent = out;
+    }, step);
+  }
+
+  // 只改「纯文本节点」的容器，避免动到 React 管的混合结构
+  function textLeafOf(root) {
+    const nodes = root.querySelectorAll("*");
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      if (n.childNodes.length === 1 && n.childNodes[0].nodeType === 3) {
+        const t = n.textContent.trim();
+        if (t.length >= 2 && t.length <= 48) return n;
+      }
+    }
+    return null;
+  }
+
+  function decodeCandidate(target) {
+    if (!target || !target.closest) return null;
+    const hit = target.closest('button, a, [role="button"], [role="option"], [role="menuitem"]');
+    if (hit) return hit;
+
+    let el = target;
+    for (let i = 0; i < 3 && el && el !== document.body; i++) {
+      const cls = el.className;
+      const parent = el.parentElement;
+      if (typeof cls === "string" && cls && parent) {
+        let same = 0;
+        for (let j = 0; j < parent.children.length; j++) {
+          if (parent.children[j].className === cls) {
+            same++;
+            if (same >= 3) return el;
+          }
+        }
+      }
+      el = el.parentElement;
+    }
+    return null;
+  }
+
+  document.addEventListener(
+    "pointerover",
+    function (e) {
+      const tier = effectsTier();
+      if (!tier) return;
+
+      const host = decodeCandidate(e.target);
+      if (!host) return;
+      const leaf = textLeafOf(host);
+      if (!leaf) return;
+
+      decodeLeaf(leaf, tier === "full" ? 7 : 9, 28);
+    },
+    true
+  );
+
+  // ---------- 整屏抖动（仅 Full） ----------
+  function jolt() {
+    const b = document.body;
+    if (!b || b.classList.contains("lain-jolt")) return;
+    b.classList.add("lain-jolt");
+    setTimeout(function () {
+      b.classList.remove("lain-jolt");
+    }, 160);
+  }
+
+  (function joltLoop() {
+    setTimeout(function () {
+      if (effectsTier() === "full" && document.visibilityState === "visible") jolt();
+      joltLoop();
+    }, 14000 + Math.random() * 10000);
+  })();
 })();
