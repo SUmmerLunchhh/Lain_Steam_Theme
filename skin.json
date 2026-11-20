@@ -27,6 +27,10 @@
             "TargetCss": "./libraryroot.custom.css"
         },
         {
+            "MatchRegexString": "ModalDialogPopup|FullModalOverlay|GameLaunching",
+            "TargetCss": "./css/launching.css"
+        },
+        {
             "MatchRegexString": "^notificationtoasts_",
             "TargetCss": "./css/toasts.css"
         },
@@ -97,7 +101,7 @@
     "author": "SUmmerLunch",
     "description": "A Serial Experiments Lain themed Steam client skin. Based on blueArchiveSteamSkin.",
     "name": "Lain",
-    "version": "1.6.1",
+    "version": "1.6.2",
     "github": {
         "owner": "SUmmerLunchhh",
         "repo_name": "Lain_Steam_Theme"
