@@ -533,6 +533,22 @@
     }
   }
 
+  // 运行中退出登录时，登录框会重新出现（这时 JS 已经在跑），补播一次 login
+  (function watchLogout() {
+    setInterval(function () {
+      const hasPassword = !!document.querySelector('input[type="password"]');
+      if (hasPassword) {
+        if (!loginPlayed) {
+          wantLogin = true;
+          playLogin();
+        }
+      } else {
+        // 登录成功后又可以重新触发
+        loginPlayed = false;
+      }
+    }, 1000);
+  })();
+
   // tryBoot / unlock 都可能调用，只跑一次
   function scheduleStartupSound() {
     if (startupScheduled) return;

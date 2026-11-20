@@ -1,6 +1,0 @@
-/* 临时探针：确认登录窗口是否可被 Millennium 注入。测完删除本文件与对应补丁。 */
-body {
-    background: #ff00ff !important;
-    outline: 6px solid #00ff00 !important;
-    outline-offset: -6px;
-}

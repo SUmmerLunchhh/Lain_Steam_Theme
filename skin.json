@@ -45,10 +45,6 @@
         {
             "MatchRegexString": "^SP Overlay:",
             "TargetCss": "./libraryroot.custom.css"
-        },
-        {
-            "MatchRegexString": ".*",
-            "TargetCss": "./css/_probe.css"
         }
     ],
     "UseDefaultPatches": false,
@@ -101,7 +97,7 @@
     "author": "SUmmerLunch",
     "description": "A Serial Experiments Lain themed Steam client skin. Based on blueArchiveSteamSkin.",
     "name": "Lain",
-    "version": "1.7.3",
+    "version": "1.7.4",
     "github": {
         "owner": "SUmmerLunchhh",
         "repo_name": "Lain_Steam_Theme"
