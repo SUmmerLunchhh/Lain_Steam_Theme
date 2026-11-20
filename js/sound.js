@@ -566,4 +566,93 @@
     if (ctx.state === "running") startHum();
     scheduleStartupSound();
   })();
+
+  // ===== LAIN DEBUG OVERLAY 起（临时，发布前删除；见 docs/DEBUG_OVERLAY.md）=====
+  (function lainDebugOverlay() {
+    let box = null;
+    let timer = null;
+    let ticks = 0;
+
+    function readState() {
+      let css;
+      let tier = "?";
+      let cursor = "?";
+      try {
+        css = getComputedStyle(document.body);
+        tier = css.getPropertyValue("--lain-tier").trim() || "off";
+        cursor = css.cursor && css.cursor.indexOf("cursor-default") >= 0 ? "custom" : "default";
+      } catch (e) {}
+
+      ticks++;
+      let nav = "?";
+      if (ticks % 3 === 1 && typeof findNavBar === "function") {
+        try {
+          nav = findNavBar() ? "found" : "none";
+        } catch (e) {
+          nav = "err";
+        }
+      }
+
+      return [
+        "lain debug",
+        "tier    " + tier,
+        "ctx     " + (ctx ? ctx.state : "null"),
+        "want    S=" + (wantStartup ? 1 : 0) + " L=" + (wantLogin ? 1 : 0),
+        "played  S=" + (startupPlayed ? 1 : 0) + " L=" + (loginPlayed ? 1 : 0),
+        "buffers S=" + (startupBuffer ? "ok" : "no") + " L=" + (loginBuffer ? "ok" : "no"),
+        "login?  " + (document.querySelector('input[type="password"]') ? "yes" : "no"),
+        "nav     " + nav,
+        "cursor  " + cursor,
+      ].join("\n");
+    }
+
+    function render() {
+      if (!box) return;
+      box.textContent = readState();
+    }
+
+    function create() {
+      box = document.createElement("pre");
+      box.setAttribute("aria-hidden", "true");
+      box.style.cssText = [
+        "position:fixed",
+        "right:10px",
+        "top:38%",
+        "margin:0",
+        "padding:8px 10px",
+        "z-index:1000001",
+        "pointer-events:none",
+        "font:11px/1.45 Consolas,monospace",
+        "white-space:pre",
+        "color:#0f0",
+        "background:rgba(0,0,0,.82)",
+        "border:1px solid rgba(0,255,204,.45)",
+        "border-radius:2px",
+        "text-shadow:none",
+        "letter-spacing:0",
+      ].join(";");
+      document.body.appendChild(box);
+      render();
+      timer = setInterval(render, 1000);
+    }
+
+    function destroy() {
+      if (timer) clearInterval(timer);
+      timer = null;
+      if (box && box.parentNode) box.parentNode.removeChild(box);
+      box = null;
+    }
+
+    document.addEventListener(
+      "keydown",
+      function (e) {
+        if (!e.ctrlKey || !e.altKey || (e.code !== "KeyD" && e.key !== "d")) return;
+        e.preventDefault();
+        if (box) destroy();
+        else create();
+      },
+      true
+    );
+  })();
+  // ===== LAIN DEBUG OVERLAY 止 =====
 })();
