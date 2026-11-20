@@ -362,3 +362,98 @@ body._2LxgdMcpWJRjkxZKbmeEEb {
     cursor: pointer;
     line-height: 0;
 }
+
+/* ============================================================
+   游戏启动弹窗（GameLaunchingDialog）
+   类名来自 sp.js 里的 CSS module 映射：
+   GameLaunchingDialog / Layout / PortraitContainer / Launching /
+   GameName / StatusWrapper / OpenSteamButton
+   ============================================================ */
+._2KQRlxOL0nH2Mx4tAGxQQr {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(8, 12, 22, 0.98), rgba(5, 8, 15, 0.98)) !important;
+    outline: 1px solid rgba(0, 255, 204, 0.28);
+    outline-offset: -1px;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.09), inset -1px -1px 0 rgba(0, 0, 0, 0.8);
+}
+
+/* 启动过程中反复扫过的亮带 */
+._2KQRlxOL0nH2Mx4tAGxQQr::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(
+        180deg,
+        rgba(190, 255, 250, 0) 0%,
+        rgba(190, 255, 250, 0.07) 50%,
+        rgba(190, 255, 250, 0) 100%
+    );
+    animation: launchSweep 2.4s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes launchSweep {
+    from {
+        top: -40%;
+    }
+    to {
+        top: 100%;
+    }
+}
+
+/* 封面加一圈青边 */
+._3_yzjqgSqhrEs9sL3hOHTq {
+    outline: 1px solid rgba(0, 255, 204, 0.35);
+    outline-offset: -1px;
+}
+
+/* 「正在启动」：字距拉开，缓慢呼吸 */
+._2Ylu2Lki0Y2s452Fh--tiE {
+    color: var(--text-color-dark) !important;
+    letter-spacing: 2px;
+    animation: launchPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes launchPulse {
+    0%,
+    100% {
+        opacity: 0.72;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* 游戏名 */
+._20PFwr9na9AT4Lz00IdtVQ {
+    color: var(--nav-text-color) !important;
+    letter-spacing: 1px;
+}
+
+/* 状态文字 */
+._2FC4Z3YksGBXT7NA421gI8,
+._2GoT7avzz1A1UJB8cj9teR {
+    color: var(--nav-text-color) !important;
+}
+
+/* 「打开 Steam」按钮 */
+._1_1gXneI2QlOdyXMqiCZJx {
+    background: var(--friend-list-light-blue) !important;
+    color: var(--text-color-dark) !important;
+    border-radius: 2px !important;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.12), inset -1px -1px 0 rgba(0, 0, 0, 0.7);
+}
+
+._1_1gXneI2QlOdyXMqiCZJx:hover {
+    background: var(--bg-color-light-gray) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ._2KQRlxOL0nH2Mx4tAGxQQr::after,
+    ._2Ylu2Lki0Y2s452Fh--tiE {
+        animation: none;
+    }
+}
