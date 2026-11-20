@@ -1,10 +1,11 @@
 # music/
 
-主题用到的全部声音，Ogg Opus 单声道格式，六个加起来约 76 KB。
+主题用到的全部声音，Ogg Opus 单声道格式，七个加起来约 155 KB。
 
 | 文件 | 用途 | 代码里的 key | 大小 |
 |---|---|---|---|
-| `Lain.ogg` | 打开 Steam 时的开机音 | `STARTUP_B64` | 27.0 KB |
+| `Lain.ogg` | 进入库时的开机音 | `STARTUP_B64` | 27.0 KB |
+| `login.ogg` | 登录 / 选择用户 / 加载用户数据界面 | `LOGIN_B64` | 78.8 KB |
 | `store.ogg` | 切到商店 | `NAV_B64.store` | 7.3 KB |
 | `library.ogg` | 切到库 | `NAV_B64.library` | 9.3 KB |
 | `community.ogg` | 切到社区 | `NAV_B64.community` | 7.2 KB |
