@@ -35,7 +35,9 @@
   let activeUntil = 0; // 当前一次性音效预计播完的时间点
   let loginBuffer = null;
   let loginPlayed = false;
-  let startupDecision = null; // "login" | "library"
+  let wantStartup = false;
+  let wantLogin = false;
+  let startupScheduled = false;
 
   function ensureCtx() {
     if (ctx) return ctx;
@@ -158,7 +160,7 @@
   }
 
   function playStartup() {
-    if (startupDecision !== "library") return;
+    if (!wantStartup) return;
     if (!ctx || !startupBuffer || startupPlayed) return;
     if (ctx.state !== "running") return; // 还没拿到自动播放许可
     startupPlayed = true;
@@ -180,7 +182,9 @@
     if (ctx.state === "suspended") ctx.resume();
     startHum();
     loadNav();
+    scheduleStartupSound();
     playStartup();
+    playLogin();
   }
 
   // 明确的交互元素
@@ -492,7 +496,7 @@
         bytes.buffer,
         function (buffer) {
           loginBuffer = buffer;
-          if (startupDecision === "login") playLogin();
+          playLogin();
         },
         function () {
           /* 解码失败就跳过 */
@@ -502,6 +506,7 @@
   }
 
   function playLogin() {
+    if (!wantLogin) return;
     if (!ctx || !loginBuffer || loginPlayed) return;
     if (ctx.state !== "running") return;
     loginPlayed = true;
@@ -515,38 +520,38 @@
     duckHum(loginBuffer.duration);
   }
 
-  // 启动时判断：还在登录/选户/加载界面，还是已经进库
-  function resolveStartup() {
-    let tries = 0;
-    const timer = setInterval(function () {
-      tries++;
-      const hasPassword = !!document.querySelector('input[type="password"]');
-      const hasNav = !!findNavBar();
-      if (hasPassword || hasNav || tries > 24) {
-        clearInterval(timer);
-        startupDecision = !hasPassword && hasNav ? "library" : "login";
-        if (startupDecision === "library") {
-          playStartup();
-        } else {
-          playLogin();
-          watchForLibrary();
-        }
-      }
-    }, 250);
+  // 启动 400ms 后判断一次：有密码框 = 登录界面，否则当已进库
+  function decideStartupSound() {
+    const onLogin = !!document.querySelector('input[type="password"]');
+    if (onLogin) {
+      wantLogin = true;
+      playLogin();
+      watchForLibrary();
+    } else {
+      wantStartup = true;
+      playStartup();
+    }
   }
 
-  // 登录完成、库出现时再补开机音
+  // tryBoot / unlock 都可能调用，只跑一次
+  function scheduleStartupSound() {
+    if (startupScheduled) return;
+    startupScheduled = true;
+    setTimeout(decideStartupSound, 400);
+  }
+
+  // 登录界面之后，等库出现再补开机音
   function watchForLibrary() {
     let ticks = 0;
     const timer = setInterval(function () {
       ticks++;
-      if (startupDecision === "library" || ticks > 240) {
+      if (wantStartup || ticks > 180) {
         clearInterval(timer);
         return;
       }
       if (findNavBar()) {
         clearInterval(timer);
-        startupDecision = "library";
+        wantStartup = true;
         playStartup();
       }
     }, 1000);
@@ -558,9 +563,7 @@
     loadStartup();
     loadNav();
     loadLogin();
-    if (ctx.state === "running") {
-      startHum();
-      resolveStartup();
-    }
+    if (ctx.state === "running") startHum();
+    scheduleStartupSound();
   })();
 })();
