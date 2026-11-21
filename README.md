@@ -28,7 +28,6 @@ Built on the skeleton of [blueArchiveSteamSkin](https://github.com/EugeneXXXie/b
 
 **Sound**
 
-- A login / account-picker / loading sound, then the chime once the library actually appears
 - CRT hum, hover and click feedback
 - Distinct navigation sounds for Store / Library / Community / Profile, plus the Friends & Chat button in the bottom-right corner
 
@@ -71,7 +70,7 @@ The tier is handed to JavaScript through a CSS custom property (`--lain-tier`), 
 
 ## Sound assets
 
-Seven audio files live in `music/`: the library-entry chime (`Lain.ogg`), the login / account-picker / loading screen (`login.ogg`), Store, Library, Community, Profile, and the bottom-right Friends button. All Ogg Opus, roughly 155 KB in total.
+Six audio files live in `music/`: the startup chime (`Lain.ogg`), Store, Library, Community, Profile, and the bottom-right Friends button. All Ogg Opus, roughly 76 KB in total.
 
 `js/sound.js` also carries base64 copies of the same clips. Steam's UI runs inside CEF, and injected JS has no reliable way to resolve the theme's directory, so reading `music/*.ogg` directly can get blocked — the embedded copies are the ones guaranteed to play.
 
@@ -81,6 +80,7 @@ If you swap a sound you have to update both sides; see [music/README.md](music/R
 
 - Steam reshuffles its CSS class hashes on every major update (things like `_1TdaAqMFadi0UTqilrkelR`). Some areas will lose styling when that happens and the theme has to be updated.
 - Steam's desktop client disables Chromium's autoplay restriction, so audio starts on load without a click. If Valve ever turns that restriction on, the code already falls back to playing on first interaction.
+- The login screen (what you see when starting signed out) cannot be themed: Millennium injects after login, and the login window isn't among the windows it patches — so no styling and no sound there.
 - Text-decode temporarily rewrites Steam's own text nodes; React writes them back on the next render. This is fine in practice — if a label ever gets stuck mid-decode, open an issue.
 - The Full tier's jolt applies a transform to `body`, so fixed-position elements shift with it for those 160 ms. That's part of the effect.
 - When the window loses focus — fully covered by another app, or you click into a child Steam window — the hum fades out and the audio context is suspended, with a 600 ms grace period. It resumes when you come back.

@@ -17,9 +17,7 @@
 lain debug
 tier    subtle        ← 当前效果档位（off / subtle / full）
 ctx     running       ← AudioContext 状态（suspended / running）
-want    S=1 L=0       ← 是否要求播开机音 / 登录音
-played  S=0 L=1       ← 是否已经播过
-buffers S=ok L=ok     ← 音频是否解码完成
+startup buffer=ok played=1   ← 开机音是否解码完成 / 是否已播过
 login?  no            ← 当前是否有密码输入框（判断登录界面）
 nav     found         ← 是否已检测到顶部导航（判断是否进库）
 cursor  custom        ← 自定义光标是否生效（判断 global.css 有没有加载）
