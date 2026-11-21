@@ -70,7 +70,7 @@ The tier is handed to JavaScript through a CSS custom property (`--lain-tier`), 
 
 ## Sound assets
 
-Six audio files live in `music/`: the startup chime (`Lain.ogg`), Store, Library, Community, the Profile page (the first 10 s of Bôa - Duvet), and the bottom-right Friends button. All Ogg Opus, roughly 127 KB in total.
+Seven audio files live in `music/`: the startup chime (`Lain.ogg`), Store, Library, Community, the Profile page click and its background track (the first 10 s of Bôa - Duvet, played once), and the bottom-right Friends button. All Ogg Opus, roughly 136 KB in total.
 
 `js/sound.js` also carries base64 copies of the same clips. Steam's UI runs inside CEF, and injected JS has no reliable way to resolve the theme's directory, so reading `music/*.ogg` directly can get blocked — the embedded copies are the ones guaranteed to play.
 
