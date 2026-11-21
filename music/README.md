@@ -1,6 +1,6 @@
 # music/
 
-主题用到的全部声音，Ogg Opus 单声道格式，七个加起来约 136 KB。
+主题用到的全部声音，Ogg Opus 单声道格式，七个加起来约 1.3 MB。
 
 | 文件 | 用途 | 代码里的 key | 大小 |
 |---|---|---|---|
@@ -8,7 +8,7 @@
 | `store.ogg` | 切到商店 | `NAV_B64.store` | 7.3 KB |
 | `library.ogg` | 切到库 | `NAV_B64.library` | 9.3 KB |
 | `community.ogg` | 切到社区 | `NAV_B64.community` | 7.2 KB |
-| `duvet.ogg` | 个人主页背景音乐（Bôa - Duvet 前 10 秒，播一遍） | `NAV_B64.profile` | 60.1 KB |
+| `duvet.ogg` | 个人主页背景音乐（Bôa - Duvet 整首，播一遍） | `NAV_B64.profile` | 1,262 KB |
 | `personal-page.ogg` | 切到个人主页的短音效 | `NAV_B64.profileClick` | 9.4 KB |
 | `friends.ogg` | 点右下角「好友与聊天」按钮 | `NAV_B64.friends` | 15.7 KB |
 

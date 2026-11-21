@@ -70,7 +70,7 @@ millennium/themes/LainTheme/skin.json
 
 ## 声音素材
 
-七个音频放在 `music/` 里：开机音（`Lain.ogg`）、切到商店、切到库、切到社区、切到个人主页的短音效、个人主页的背景音乐（Bôa - Duvet 前 10 秒）、右下角好友按钮。全部是 Ogg Opus，加起来约 136 KB。
+七个音频放在 `music/` 里：开机音（`Lain.ogg`）、切到商店、切到库、切到社区、切到个人主页的短音效、个人主页的背景音乐（Bôa - Duvet 整首）、右下角好友按钮。全部是 Ogg Opus，加起来约 1.3 MB。
 
 `js/sound.js` 里同时内嵌了同一批音频的 base64 副本 —— 因为 Steam 的界面跑在 CEF 里，注入的 JS 拿不到可靠的主题目录路径，直接读 `music/*.ogg` 有被拦的风险，内嵌那份是"保证能响"的版本。
 
