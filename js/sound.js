@@ -471,11 +471,30 @@
     while (el && el.parentElement !== navBar) el = el.parentElement;
     if (!el) return null;
 
-    const t = (el.innerText || "").trim().toUpperCase();
-    if (t.indexOf("商店") >= 0 || t === "STORE") return "store";
-    if (t.indexOf("库") >= 0 || t === "LIBRARY") return "library";
-    if (t.indexOf("社区") >= 0 || t === "COMMUNITY") return "community";
-    return "profile"; // 这一排里剩下的那项一般是个人主页
+    // textContent 包含隐藏节点里的文字；innerText 会把 display:none 的部分读成空
+    const raw = (
+      el.textContent ||
+      el.getAttribute("aria-label") ||
+      el.getAttribute("title") ||
+      ""
+    )
+      .replace(/\s+/g, "")
+      .toUpperCase();
+
+    if (raw.indexOf("商店") >= 0 || raw === "STORE") return "store";
+    if (raw.indexOf("库") >= 0 || raw === "LIBRARY") return "library";
+    if (raw.indexOf("社区") >= 0 || raw === "COMMUNITY") return "community";
+
+    // 文字认不出来（纯图标按钮之类）时按顺序兜底：固定是 商店/库/社区/个人
+    const kids = navBar.children;
+    if (kids.length >= 3) {
+      const idx = Array.prototype.indexOf.call(kids, el);
+      if (idx === 0) return "store";
+      if (idx === 1) return "library";
+      if (idx === 2) return "community";
+    }
+
+    return "profile"; // 这一排里剩下的那项才是个人主页
   }
 
   // ---------- 进后台 / 最小化就静音 ----------
