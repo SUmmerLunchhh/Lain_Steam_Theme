@@ -261,6 +261,8 @@
         return;
       }
       if (!clickableOf(e.target)) return;
+      // 点左侧游戏列表 = 离开个人页
+      if (profileSource && e.clientX < 360) stopProfile();
       const pan = (e.clientX / window.innerWidth) * 1.2 - 0.6;
       blip(660, 0.07, "triangle", 0.22, pan);
     },
@@ -323,6 +325,8 @@
     if (!ctx || !out) return;
     const buf = navBuffers[key];
     if (!buf) return;
+    // 个人页是背景音乐：已经在播就别重来
+    if (key === "profile" && profileSource) return;
     if (ctx.state === "suspended") ctx.resume();
     if (key !== "profile") stopProfile();
     const src = ctx.createBufferSource();
@@ -331,6 +335,8 @@
     src.buffer = buf;
     src.connect(gain);
     gain.connect(out);
+    // 个人页循环播放，直到离开
+    if (key === "profile") src.loop = true;
     src.start(0);
     if (key === "profile") {
       profileSource = src;
