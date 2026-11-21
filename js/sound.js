@@ -260,9 +260,11 @@
         playNav("friends");
         return;
       }
-      if (!clickableOf(e.target)) return;
-      // 点左侧游戏列表 = 离开个人页
-      if (profileSource && e.clientX < 360) stopProfile();
+      const hit = clickableOf(e.target);
+      if (!hit) return;
+      // 只有点到左侧游戏列表的「一行」才算离开个人页；
+      // 个人页自己的左栏也在 x<360，不能一律停
+      if (profileSource && e.clientX < 360 && isRow(hit)) stopProfile();
       const pan = (e.clientX / window.innerWidth) * 1.2 - 0.6;
       blip(660, 0.07, "triangle", 0.22, pan);
     },
@@ -337,6 +339,8 @@
     src.start(0);
     profileSource = src;
     profileGain = gain;
+    // 让 suspendWhenIdle 知道这段时间有东西在播，别中途挂起
+    activeUntil = Math.max(activeUntil, ctx.currentTime + buf.duration);
     // 播完自动清空，下次进个人页还能再放
     src.onended = function () {
       if (profileSource === src) {
