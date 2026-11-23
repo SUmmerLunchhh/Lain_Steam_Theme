@@ -555,11 +555,17 @@
     if (!el || !el.getAttribute) return null;
     const t = (el.textContent || "") + " " + (el.getAttribute("aria-label") || "");
     const s = t.replace(/\s+/g, "").toUpperCase();
-    if (!s || s.length > 24) return null;
-    if (s.indexOf("商店") >= 0 || s === "STORE") return "store";
-    if (s.indexOf("库") >= 0 || s === "LIBRARY") return "library";
-    if (s.indexOf("社区") >= 0 || s === "COMMUNITY") return "community";
-    return null;
+    if (!s || s.length > 40) return null;
+
+    // 命中两个以上标签 = 这是包着几个标签的容器，不是单个标签。
+    // （中文标签很短，光靠长度过滤挡不住：四个拼起来也才 9 个字）
+    const hits = [];
+    if (s.indexOf("商店") >= 0 || s.indexOf("STORE") >= 0) hits.push("store");
+    if (s.indexOf("库") >= 0 || s.indexOf("LIBRARY") >= 0) hits.push("library");
+    if (s.indexOf("社区") >= 0 || s.indexOf("COMMUNITY") >= 0) hits.push("community");
+
+    if (hits.length !== 1) return null;
+    return hits[0];
   }
 
   // ---------- 进后台 / 最小化就静音 ----------
