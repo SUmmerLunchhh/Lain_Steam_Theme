@@ -1,23 +1,53 @@
 > **English** | [简体中文](README_zh.md)
 
-# Lain — a Steam theme
+<p align="center">
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/header_image.jpeg" width="820">
+</p>
 
-A *Serial Experiments Lain* theme for the Steam client: near-black background, phosphor cyan and dusty pink, full-width labels, with CRT scanlines, film grain and a power-on flash layered on top. The look deliberately targets that 1998 machine — desaturated, grainy and slightly sluggish — rather than modern neon cyberpunk.
+<h1 align="center">Lain</h1>
+
+<p align="center">
+  <em>A Serial Experiments Lain theme for the Steam client — phosphor cyan on near-black, CRT scanlines, film grain, 90s window chrome, and a full sound system.</em>
+</p>
+
+A *Serial Experiments Lain* theme for the Steam client: near-black surfaces, phosphor cyan and dusty pink, full-width labels, with CRT scanlines, film grain and a power-on flash layered on top. The look deliberately targets that 1998 machine — desaturated, grainy and slightly sluggish — rather than modern neon cyberpunk.
 
 Built on the skeleton of [blueArchiveSteamSkin](https://github.com/EugeneXXXie/blueArchiveSteamSkin) by EugeneXXXie (MIT). The file layout and a good part of the settings-page styling come from that project.
 
 ## Screenshots
 
-<p>
-  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630944208.jpg" height="200">
-  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630946568.jpg" height="200">
-  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630948748.jpg" height="200">
-</p>
-<p>
-  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-12%20211929.png" height="200">
-  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630953222.jpg" height="200">
-  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630955613.jpg" height="200">
-</p>
+<table>
+  <tr>
+    <td width="50%">
+      <p align="center"><b>Game page</b></p>
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630944208.jpg" width="100%">
+    </td>
+    <td width="50%">
+      <p align="center"><b>Library and friends list</b></p>
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630946568.jpg" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <p align="center"><b>Game page — lain</b></p>
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630948748.jpg" width="100%">
+    </td>
+    <td width="50%">
+      <p align="center"><b>Library home</b></p>
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-12%20211929.png" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <p align="center"><b>Library shelves and activity</b></p>
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630953222.jpg" width="100%">
+    </td>
+    <td width="50%">
+      <p align="center"><b>Settings</b></p>
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630955613.jpg" width="100%">
+    </td>
+  </tr>
+</table>
 
 ## What you get
 

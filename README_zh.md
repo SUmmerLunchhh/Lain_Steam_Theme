@@ -1,6 +1,14 @@
 > [English](README.md) | **简体中文**
 
-# Lain — Steam 主题
+<p align="center">
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/header_image.jpeg" width="820">
+</p>
+
+<h1 align="center">Lain · 玲音主题</h1>
+
+<p align="center">
+  <em>为 Steam 客户端做的《Serial Experiments Lain》主题 —— 近黑底、荧光青、CRT 扫描线、胶片颗粒，加上一套完整的音效。</em>
+</p>
 
 为 Steam 客户端做的《Serial Experiments Lain》风格主题：近黑底色、荧光青与脏粉、全角字符标签，叠加 CRT 扫描线、胶片颗粒和开机点亮。视觉上刻意做成 1998 年那台机器的样子 —— 低饱和、有颗粒、反应迟钝，而不是现代那种高饱和霓虹。
 
@@ -8,16 +16,38 @@
 
 ## 截图
 
-<p>
-  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630944208.jpg" height="200">
-  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630946568.jpg" height="200">
-  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630948748.jpg" height="200">
-</p>
-<p>
-  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-12%20211929.png" height="200">
-  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630953222.jpg" height="200">
-  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630955613.jpg" height="200">
-</p>
+<table>
+  <tr>
+    <td width="50%">
+      <p align="center"><b>游戏详情页</b></p>
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630944208.jpg" width="100%">
+    </td>
+    <td width="50%">
+      <p align="center"><b>库与好友列表</b></p>
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630946568.jpg" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <p align="center"><b>游戏详情页（lain）</b></p>
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630948748.jpg" width="100%">
+    </td>
+    <td width="50%">
+      <p align="center"><b>库首页</b></p>
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-12%20211929.png" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <p align="center"><b>库货架与动态</b></p>
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630953222.jpg" width="100%">
+    </td>
+    <td width="50%">
+      <p align="center"><b>设置</b></p>
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630955613.jpg" width="100%">
+    </td>
+  </tr>
+</table>
 
 ## 效果
 
