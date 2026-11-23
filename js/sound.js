@@ -481,22 +481,60 @@
       probe = probe.parentElement;
     }
 
-    // 2) 文字认不出来（纯图标等）：只把「最右边那一项」当个人主页
-    const kids = navBar.children;
-    let rightmost = null;
-    let maxLeft = -1;
-    for (let i = 0; i < kids.length; i++) {
-      const r = kids[i].getBoundingClientRect();
-      if (r.width < 4) continue;
-      if (r.left > maxLeft) {
-        maxLeft = r.left;
-        rightmost = kids[i];
+    // 2) 文字认不出来：收集导航条里「叶子级」的小方块，按视觉位置排序后取序号
+    const all = navBar.querySelectorAll("*");
+    const cand = [];
+    for (let i = 0; i < all.length; i++) {
+      const r = all[i].getBoundingClientRect();
+      if (r.width < 30 || r.width > 320) continue;
+      if (r.height < 15 || r.height > 70) continue;
+      cand.push({ el: all[i], left: r.left });
+    }
+    // 只留最内层，避免把包着几个标签的容器也算成一项
+    const leaves = cand.filter(function (c) {
+      return !cand.some(function (d) {
+        return d !== c && c.el.contains(d.el);
+      });
+    });
+    leaves.sort(function (a, b) {
+      return a.left - b.left;
+    });
+
+    let idx = -1;
+    for (let i = 0; i < leaves.length; i++) {
+      if (leaves[i].el.contains(target)) {
+        idx = i;
+        break;
       }
     }
-    if (rightmost && rightmost === tabEl) return "profile";
 
-    // 3) 还是不确定就别放导航音，只放通用点击音 —— 宁可不响，也不能放错
-    return null;
+    let key = "profile";
+    if (idx === 0) key = "store";
+    else if (idx === 1) key = "library";
+    else if (idx === 2) key = "community";
+
+    rememberNav(shortTextOf(target) + " | idx=" + idx + "/" + leaves.length + " -> " + key);
+    return key;
+  }
+
+  // 调试用：记录最近几次导航识别结果（Ctrl+Alt+D 可见）
+  let navHistory = [];
+
+  function rememberNav(line) {
+    navHistory.push(line);
+    if (navHistory.length > 4) navHistory.shift();
+  }
+
+  function shortTextOf(el) {
+    let p = el;
+    for (let i = 0; i < 5 && p; i++) {
+      const s = ((p.textContent || "") + (p.getAttribute ? p.getAttribute("aria-label") || "" : ""))
+        .replace(/\s+/g, "")
+        .toUpperCase();
+      if (s && s.length <= 20) return s;
+      p = p.parentElement;
+    }
+    return "?";
   }
 
   // 只认「很短」的文字，避免把整个容器当成一个标签
@@ -653,6 +691,8 @@
         "startup " + (startupBuffer ? "buffer=ok" : "buffer=no") + " played=" + (startupPlayed ? 1 : 0),
         "login?  " + (document.querySelector('input[type="password"]') ? "yes" : "no"),
         "nav     " + nav,
+        "last    " + (navHistory.length ? navHistory[navHistory.length - 1] : "-"),
+        "prev    " + (navHistory.length > 1 ? navHistory.slice(0, -1).join(" / ") : "-"),
         "cursor  " + cursor,
       ].join("\n");
     }
