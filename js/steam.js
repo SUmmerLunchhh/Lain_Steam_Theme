@@ -128,19 +128,37 @@
   // ---------- 文字解码 ----------
   const DECODE_CHARS = "\u2593\u2592\u2591\u258801\uFF71\uFF72\uFF73\uFF74\uFF75<>/\\|";
 
+  // 正在解码的元素，存起来以便随时还原（导航识别需要读到干净的文字）
+  const activeDecodes = new Set();
+
+  function restoreDecode(entry) {
+    try {
+      clearInterval(entry.timer);
+      entry.el.textContent = entry.original;
+      entry.el.dataset.lainDec = "0";
+    } catch (e) {}
+    activeDecodes.delete(entry);
+  }
+
+  function stopAllDecodes() {
+    Array.from(activeDecodes).forEach(restoreDecode);
+  }
+
+  // sound.js 在点击时会调用它
+  window.__lainStopDecode = stopAllDecodes;
+
   function decodeLeaf(el, frames, step) {
     if (!el || el.dataset.lainDec === "1") return;
     const original = el.textContent;
     if (!original || original.length < 2 || original.length > 48) return;
 
     el.dataset.lainDec = "1";
+    const entry = { el: el, original: original, timer: null };
     let frame = 0;
-    const timer = setInterval(function () {
+    entry.timer = setInterval(function () {
       frame++;
       if (frame >= frames) {
-        clearInterval(timer);
-        el.textContent = original;
-        el.dataset.lainDec = "0";
+        restoreDecode(entry);
         return;
       }
       const keep = Math.floor((frame / frames) * original.length);
@@ -153,6 +171,7 @@
       }
       el.textContent = out;
     }, step);
+    activeDecodes.add(entry);
   }
 
   // 只改「纯文本节点」的容器，避免动到 React 管的混合结构

@@ -251,7 +251,9 @@
     "pointerdown",
     function (e) {
       if (!unlocked) return;
-      const navKey = navKeyAt(e.target);
+      // 先把正在解码的文字还原，否则读到的是乱码
+      if (window.__lainStopDecode) window.__lainStopDecode();
+      const navKey = navKeyAt(e.target, e.clientX, e.clientY);
       if (navKey) {
         playNav(navKey);
         return;
@@ -456,7 +458,7 @@
     return false;
   }
 
-  function navKeyAt(target) {
+  function navKeyAt(target, px, py) {
     if (!target || !target.closest) return null;
     if (!navBar || !navBar.isConnected) {
       const now = performance.now();
@@ -482,13 +484,16 @@
     }
 
     // 2) 文字认不出来：收集导航条里「叶子级」的小方块，按视觉位置排序后取序号
+    const bar = navBar.getBoundingClientRect();
     const all = navBar.querySelectorAll("*");
     const cand = [];
     for (let i = 0; i < all.length; i++) {
       const r = all[i].getBoundingClientRect();
       if (r.width < 30 || r.width > 320) continue;
       if (r.height < 15 || r.height > 70) continue;
-      cand.push({ el: all[i], left: r.left });
+      // 必须落在导航条的高度范围内，避免把别处的小方块算进来
+      if (r.top < bar.top - 12 || r.bottom > bar.bottom + 12) continue;
+      cand.push({ el: all[i], r: r });
     }
     // 只留最内层，避免把包着几个标签的容器也算成一项
     const leaves = cand.filter(function (c) {
@@ -497,21 +502,29 @@
       });
     });
     leaves.sort(function (a, b) {
-      return a.left - b.left;
+      return a.r.left - b.r.left;
     });
 
+    // 用「点击坐标是否落在矩形里」判断，比 DOM 包含关系可靠
     let idx = -1;
     for (let i = 0; i < leaves.length; i++) {
-      if (leaves[i].el.contains(target)) {
+      const r = leaves[i].r;
+      if (px >= r.left - 3 && px <= r.right + 3 && py >= r.top - 3 && py <= r.bottom + 3) {
         idx = i;
         break;
       }
     }
+    // 都没命中就取「最靠左且不晚于点击位置」的那块
+    if (idx < 0) {
+      for (let i = 0; i < leaves.length; i++) {
+        if (leaves[i].r.left <= px) idx = i;
+        else break;
+      }
+    }
 
-    let key = "profile";
-    if (idx === 0) key = "store";
-    else if (idx === 1) key = "library";
-    else if (idx === 2) key = "community";
+    // 只有最右边那一块才当个人主页；其它认不出的不猜，放通用点击音
+    let key = null;
+    if (idx >= 0 && idx === leaves.length - 1) key = "profile";
 
     rememberNav(shortTextOf(target) + " | idx=" + idx + "/" + leaves.length + " -> " + key);
     return key;
