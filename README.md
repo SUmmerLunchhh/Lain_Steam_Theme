@@ -20,31 +20,31 @@ Built on the skeleton of [blueArchiveSteamSkin](https://github.com/EugeneXXXie/b
   <tr>
     <td width="50%">
       <p align="center"><b>Game page</b></p>
-      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630944208.jpg" width="100%">
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/screenshots/01-game-page.webp" width="100%">
     </td>
     <td width="50%">
       <p align="center"><b>Library and friends list</b></p>
-      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630946568.jpg" width="100%">
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/screenshots/02-library-friends.webp" width="100%">
     </td>
   </tr>
   <tr>
     <td width="50%">
       <p align="center"><b>Game page — lain</b></p>
-      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630948748.jpg" width="100%">
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/screenshots/03-game-page-lain.webp" width="100%">
     </td>
     <td width="50%">
       <p align="center"><b>Library home</b></p>
-      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-12%20211929.png" width="100%">
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/screenshots/04-library-home.webp" width="100%">
     </td>
   </tr>
   <tr>
     <td width="50%">
       <p align="center"><b>Library shelves and activity</b></p>
-      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630953222.jpg" width="100%">
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/screenshots/05-library-activity.webp" width="100%">
     </td>
     <td width="50%">
       <p align="center"><b>Settings</b></p>
-      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630955613.jpg" width="100%">
+      <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/screenshots/06-settings.webp" width="100%">
     </td>
   </tr>
 </table>
