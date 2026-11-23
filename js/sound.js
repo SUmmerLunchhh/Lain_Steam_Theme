@@ -467,34 +467,48 @@
     }
     if (!navBar.contains(target)) return null;
 
-    let el = target;
-    while (el && el.parentElement !== navBar) el = el.parentElement;
-    if (!el) return null;
+    // navBar 的直接子元素里，包含点击点的那个
+    let tabEl = target;
+    while (tabEl && tabEl.parentElement !== navBar) tabEl = tabEl.parentElement;
+    if (!tabEl) return null;
 
-    // textContent 包含隐藏节点里的文字；innerText 会把 display:none 的部分读成空
-    const raw = (
-      el.textContent ||
-      el.getAttribute("aria-label") ||
-      el.getAttribute("title") ||
-      ""
-    )
-      .replace(/\s+/g, "")
-      .toUpperCase();
-
-    if (raw.indexOf("商店") >= 0 || raw === "STORE") return "store";
-    if (raw.indexOf("库") >= 0 || raw === "LIBRARY") return "library";
-    if (raw.indexOf("社区") >= 0 || raw === "COMMUNITY") return "community";
-
-    // 文字认不出来（纯图标按钮之类）时按顺序兜底：固定是 商店/库/社区/个人
-    const kids = navBar.children;
-    if (kids.length >= 3) {
-      const idx = Array.prototype.indexOf.call(kids, el);
-      if (idx === 0) return "store";
-      if (idx === 1) return "library";
-      if (idx === 2) return "community";
+    // 1) 先用文字认：从点击点往上找第一个「文字很短」的元素
+    //    容器会把三个标签的文字拼在一起（很长），所以用长度过滤掉
+    let probe = target;
+    for (let i = 0; i < 6 && probe && probe !== navBar.parentElement; i++) {
+      const k = keyFromText(probe);
+      if (k) return k;
+      probe = probe.parentElement;
     }
 
-    return "profile"; // 这一排里剩下的那项才是个人主页
+    // 2) 文字认不出来（纯图标等）：只把「最右边那一项」当个人主页
+    const kids = navBar.children;
+    let rightmost = null;
+    let maxLeft = -1;
+    for (let i = 0; i < kids.length; i++) {
+      const r = kids[i].getBoundingClientRect();
+      if (r.width < 4) continue;
+      if (r.left > maxLeft) {
+        maxLeft = r.left;
+        rightmost = kids[i];
+      }
+    }
+    if (rightmost && rightmost === tabEl) return "profile";
+
+    // 3) 还是不确定就别放导航音，只放通用点击音 —— 宁可不响，也不能放错
+    return null;
+  }
+
+  // 只认「很短」的文字，避免把整个容器当成一个标签
+  function keyFromText(el) {
+    if (!el || !el.getAttribute) return null;
+    const t = (el.textContent || "") + " " + (el.getAttribute("aria-label") || "");
+    const s = t.replace(/\s+/g, "").toUpperCase();
+    if (!s || s.length > 24) return null;
+    if (s.indexOf("商店") >= 0 || s === "STORE") return "store";
+    if (s.indexOf("库") >= 0 || s === "LIBRARY") return "library";
+    if (s.indexOf("社区") >= 0 || s === "COMMUNITY") return "community";
+    return null;
   }
 
   // ---------- 进后台 / 最小化就静音 ----------
