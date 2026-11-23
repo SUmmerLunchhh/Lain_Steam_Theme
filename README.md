@@ -6,6 +6,19 @@ A *Serial Experiments Lain* theme for the Steam client: near-black background, p
 
 Built on the skeleton of [blueArchiveSteamSkin](https://github.com/EugeneXXXie/blueArchiveSteamSkin) by EugeneXXXie (MIT). The file layout and a good part of the settings-page styling come from that project.
 
+## Screenshots
+
+<p>
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630944208.jpg" height="200">
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630946568.jpg" height="200">
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630948748.jpg" height="200">
+</p>
+<p>
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-12%20211929.png" height="200">
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630953222.jpg" height="200">
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630955613.jpg" height="200">
+</p>
+
 ## What you get
 
 **Interface**

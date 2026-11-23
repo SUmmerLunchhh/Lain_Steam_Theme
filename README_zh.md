@@ -6,6 +6,19 @@
 
 基于 [blueArchiveSteamSkin](https://github.com/EugeneXXXie/blueArchiveSteamSkin)（作者 EugeneXXXie，MIT）的骨架改写，原始文件结构和部分设置页样式来自该项目。
 
+## 截图
+
+<p>
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630944208.jpg" height="200">
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630946568.jpg" height="200">
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630948748.jpg" height="200">
+</p>
+<p>
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-09-12%20211929.png" height="200">
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630953222.jpg" height="200">
+  <img src="https://raw.githubusercontent.com/SUmmerLunchhh/AAA-/main/imgs/mmexport1788630955613.jpg" height="200">
+</p>
+
 ## 效果
 
 **界面**
