@@ -19,27 +19,27 @@ Built on the skeleton of [blueArchiveSteamSkin](https://github.com/EugeneXXXie/b
 <table>
   <tr>
     <td width="50%">
-      <p align="center"><b>Game page</b></p>
+      <p align="center"><b>Back ground</b></p>
       <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/screenshots/01-game-page.webp" width="100%">
     </td>
     <td width="50%">
-      <p align="center"><b>Library and friends list</b></p>
+      <p align="center"><b>Community</b></p>
       <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/screenshots/02-library-friends.webp" width="100%">
     </td>
   </tr>
   <tr>
     <td width="50%">
-      <p align="center"><b>Game page — lain</b></p>
+      <p align="center"><b>Download</b></p>
       <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/screenshots/03-game-page-lain.webp" width="100%">
     </td>
     <td width="50%">
-      <p align="center"><b>Library home</b></p>
+      <p align="center"><b>Library</b></p>
       <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/screenshots/04-library-home.webp" width="100%">
     </td>
   </tr>
   <tr>
     <td width="50%">
-      <p align="center"><b>Library shelves and activity</b></p>
+      <p align="center"><b>Store</b></p>
       <img src="https://raw.githubusercontent.com/SUmmerLunchhh/Lain_Steam_Theme/main/screenshots/05-library-activity.webp" width="100%">
     </td>
     <td width="50%">
